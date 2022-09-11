@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0px;
+  background-color: #212529;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #faebd7;
+}
+
+.header {
+  background-color: #f4716a;
+  height: 60px;
+}
+
+.header-icon {
+  color: #faebd7;
+}
+
+.menu-bars {
+  font-size: 2rem;
+  background: none;
+}
+
+.appTitle a {
+  color: #faebd7;
+  text-decoration: none;
+}
+
+.header,
+.appTitle a:hover,
+.header-icon:hover,
+h1:hover {
+  color: #3c6da5;
+}
+
+.chart {
+  margin: 0;
+}
