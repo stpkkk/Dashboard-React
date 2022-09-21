@@ -9,6 +9,8 @@ export const chartSlice = createSlice({
   reducers: {
     addChart: (state, action: PayloadAction<IChart>) => {
       state.push(action.payload);
+	//   return  [...state, action.payload];
+	  
     },
     deleteChart: (state, action: PayloadAction<IChart>) => {
       return state.filter((chart: IChart) => chart.id !== action.payload.id);
