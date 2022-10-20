@@ -1,6 +1,6 @@
 <div stl></div>
 <h2>Deploy: 
- https://delivery-table.netlify.app/
+ https://dashboard-bystpkkk.netlify.app/
 </h2>
 <details>
 <summary>
