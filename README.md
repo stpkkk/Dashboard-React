@@ -56,11 +56,11 @@
 </div>
 
 <div >
-<p>Превью:</p>
-<img src="https://github.com/stpkkk/React-Table-Test-Welbex/blob/master/about/Prewie.png" alt="test">
+<p>Prewie:</p>
+<img src="https://github.com/stpkkk/Dashboard-React/blob/master/Prewie.png" alt="test">
 </div>
 <div >
-<p>Тестовое:</p>
-<img src="https://github.com/stpkkk/Dashboard-React/blob/master/Frontend%20Test%20React%20Natlex.pdf" alt="test">
+<p>Test:</p>
+<img src="https://github.com/stpkkk/Dashboard-React/blob/master/test-Natlex.png" alt="test">
 </div>
 </details>
