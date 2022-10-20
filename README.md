@@ -6,10 +6,8 @@
 <summary>
 <h2>How to start</h2>
 </summary>
-<div>
-<p>1. База данных для создания таблицы в pgAdmin находится в файлe <b>.../server/database.sql</b></p>
-<div>
-<p>2. Сервер. Открываем папку в директории <b>.../server</b> и используем команду</p>
+
+
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>yarn install
 </code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
     <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="npm install" tabindex="0" role="button">
