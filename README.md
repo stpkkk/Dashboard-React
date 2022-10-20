@@ -42,21 +42,17 @@
 <h2>About</h2>
 </summary>
 <div>
-<h2>Использовались библиотеки</h2>
-<p>UI:</p>
-<p>moment - для форматирования даты</p>
-<p>sass - препроцессор CSS</p>
-<p>Backend:</p>
-<p>express -  фреймворк для Node.js</p>
-<p>pg - для подключения к базе данных PostgreSQL</p>
-<p>cors - для дополнительных заголовков http</p>
+<h2>Libraries were used</h2>
+<p>axios - HTTP-client</p>
+<p>sass - CSS preprocessor</p>
+<p>Bootstrap - CSS framework</p>
+ <p>Hightcharts - charts</p>
+ <p>react-icons</p>
+ <p>react-redux - state manager</p>
+ <p>react-router-dom - declarative routing for React</p>
 </div>
 <div>
-<h2>О задании</h2>
-    <p>Тестовое задание на должность Frontend-разработчика в компании Welbex с использование фреймворка React.js, PostgreSQL, Sass.</p> <p>Реализовано одностраничное веб-приложение для отображения таблицы с возможностью сортировки и пагинации.</p>
-        Backend часть реализована в виде СУБД PostgreSQL и приложения pgAdmin.</p>
-    <p>Деплой серверной части проекта реальзован с помощью облачной платформы Heroku и приложения pgAdmin</p>
-    <p>Деплой клиентской части реальзован с помощью сервиса Netlify</p>
+<h2>Frontend-developer test task for "Natlex" company</h2>
 </div>
 
 <div >
