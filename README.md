@@ -61,6 +61,6 @@
 </div>
 <div >
 <p>Тестовое:</p>
-<img src="https://github.com/stpkkk/React-Table-Test-Welbex/blob/master/about/WelbexTest.png" alt="test">
+<img src="https://github.com/stpkkk/Dashboard-React/blob/master/Frontend%20Test%20React%20Natlex.pdf" alt="test">
 </div>
 </details>
