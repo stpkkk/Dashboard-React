@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import ViewMode from "./pages/ViewMode";
-import About from "./pages/About";
-import Header from "./components/Header/Header";
-import Settings from "./pages/Settings";
-import Navbar from "./components/Navbar/Navbar";
+import ViewMode from "../pages/ViewMode";
+import About from "../pages/About";
+import Header from "./Header/Header";
+import Settings from "../pages/Settings";
+import Navbar from "./Navbar/Navbar";
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [sidebar, setSidebar] = useState<boolean>(false);
 
   const showSidebar = () => {
@@ -27,5 +27,3 @@ const App: React.FC = () => {
     </>
   );
 };
-
-export default App;
