@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import "./Modal.css";
-import { CompactPicker } from "react-color";
-import { editChart } from "../../redux/chartsSlice";
-import { useAppDispatch } from "../../redux/hooks";
-import { selectModalData } from "../../data/selectModalData";
-import { chartsDataValue } from "../../data/chartsData";
+import React, { useState } from 'react'
+import './Modal.css'
+import { CompactPicker } from 'react-color'
+import { editChart } from '../../redux/chartsSlice'
+import { useAppDispatch } from '../../redux/hooks'
+import { selectModalData } from '../../data/selectModalData'
+import { chartsDataValue } from '../../data/chartsData'
 
 interface ModalEditProps {
-  showEditModal: boolean;
-  setShowEditModal: (value: boolean) => void;
+  showEditModal: boolean
+  setShowEditModal: (value: boolean) => void
   chart: {
-    id: string;
-    name: string;
-    type: string;
-    data: number[][];
-    color: string;
-  };
+    id: string
+    name: string
+    type: string
+    data: number[][]
+    color: string
+  }
 }
 
 const ModalEditChart: React.FC<ModalEditProps> = ({
   chart,
   showEditModal,
-  setShowEditModal,
+  setShowEditModal
 }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const [newChartName, setNewChartName] = useState<string>("");
-  const [newChartType, setNewChartType] = useState<string>("");
-  const [newChartDataName, setNewChartDataName] = useState<string>("");
-  const [newChartColor, setNewChartColor] = useState<string>("");
+  const [newChartName, setNewChartName] = useState<string>('')
+  const [newChartType, setNewChartType] = useState<string>('')
+  const [newChartDataName, setNewChartDataName] = useState<string>('')
+  const [newChartColor, setNewChartColor] = useState<string>('')
 
   const handleChange = () => {
     dispatch(
@@ -37,38 +37,38 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
         name: newChartName,
         type: newChartType,
         data: chartsDataValue[newChartDataName],
-        color: newChartColor,
+        color: newChartColor
       })
-    );
-    setShowEditModal(false);
-  };
+    )
+    setShowEditModal(false)
+  }
 
   const handleChangeNewChartType = (event: {
-    target: { value: React.SetStateAction<string> };
+    target: { value: React.SetStateAction<string> }
   }) => {
-    setNewChartType(event.target.value);
-  };
+    setNewChartType(event.target.value)
+  }
   const handleChangeNewChartDataName = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setNewChartDataName(event.target.value);
-  };
+    setNewChartDataName(event.target.value)
+  }
 
   return (
     <>
       <div
-        className={showEditModal ? "modal active" : "modal"}
-        onClick={() => setShowEditModal(false)}
+        className={showEditModal ? 'modal active' : 'modal'}
+        onClick={() => { setShowEditModal(false) }}
       >
         <div
-          className={showEditModal ? "modal-content active" : "modal-content"}
-          onClick={e => e.stopPropagation()}
+          className={showEditModal ? 'modal-content active' : 'modal-content'}
+          onClick={e => { e.stopPropagation() }}
         >
           <button
             type="button"
             className="btn btn-close float-end mb-4"
             aria-label="Close"
-            onClick={() => setShowEditModal(false)}
+            onClick={() => { setShowEditModal(false) }}
           />
           <h3 className=".mb-0">Edit</h3>
 
@@ -83,7 +83,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
                   placeholder={chart.name}
                   className="form-control"
                   onChange={event => {
-                    setNewChartName(event.target.value);
+                    setNewChartName(event.target.value)
                   }}
                 />
               </div>
@@ -100,8 +100,8 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
                   {selectModalData.typeOptions.map(
                     (
                       option: {
-                        value: string;
-                        label: string;
+                        value: string
+                        label: string
                       },
                       index: number
                     ) => (
@@ -119,7 +119,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
                 </label>
                 <select
                   className="form-select"
-                  onChange={event => handleChangeNewChartDataName(event)}
+                  onChange={event => { handleChangeNewChartDataName(event) }}
                 >
                   {Object.keys(chartsDataValue).map((chart, index) => {
                     return (
@@ -129,7 +129,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
                         value={chart}
                         label={chart}
                       ></option>
-                    );
+                    )
                   })}
                 </select>
               </div>
@@ -142,7 +142,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
                   className="w-100"
                   color={newChartColor}
                   onChangeComplete={color => {
-                    setNewChartColor(color.hex);
+                    setNewChartColor(color.hex)
                   }}
                 />
               </div>
@@ -159,7 +159,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ModalEditChart;
+export default ModalEditChart

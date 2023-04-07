@@ -1,66 +1,66 @@
-import React, { useState } from "react";
-import "./Modal.css";
-import { CompactPicker } from "react-color";
-import { addChart } from "../../redux/chartsSlice";
-import { useDispatch } from "react-redux";
-import { chartsDataValue } from "../../data/chartsData";
-import { selectModalData } from "../../data/selectModalData";
+import React, { useState } from 'react'
+import './Modal.css'
+import { CompactPicker } from 'react-color'
+import { addChart } from '../../redux/chartsSlice'
+import { useDispatch } from 'react-redux'
+import { chartsDataValue } from '../../data/chartsData'
+import { selectModalData } from '../../data/selectModalData'
 
 interface ModalProps {
-  showAddModal: boolean;
-  setShowAddModal: (name: boolean) => void;
+  showAddModal: boolean
+  setShowAddModal: (name: boolean) => void
 }
 
 const ModalAddChart: React.FC<ModalProps> = ({
   showAddModal,
-  setShowAddModal,
+  setShowAddModal
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [chartColor, setChartColor] = useState<string>("#a53c82");
-  const [chartName, setChartName] = useState<string>("");
-  const [chartType, setChartType] = useState<string>("");
-  const [chartDataName, setChartDataName] = useState<string>("");
+  const [chartColor, setChartColor] = useState<string>('#a53c82')
+  const [chartName, setChartName] = useState<string>('')
+  const [chartType, setChartType] = useState<string>('')
+  const [chartDataName, setChartDataName] = useState<string>('')
 
   const handleChangeChartType = (event: {
-    target: { value: React.SetStateAction<string> };
+    target: { value: React.SetStateAction<string> }
   }) => {
-    setChartType(event.target.value);
-  };
+    setChartType(event.target.value)
+  }
   const handleChangeChartDataName = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setChartDataName(event.target.value);
-  };
+    setChartDataName(event.target.value)
+  }
 
   const handleChange = () => {
-    setShowAddModal(false);
+    setShowAddModal(false)
     dispatch(
       addChart({
         id: Math.random().toString().substr(2, 2),
         name: chartName,
         color: chartColor,
         type: chartType,
-        data: chartsDataValue[chartDataName],
+        data: chartsDataValue[chartDataName]
       })
-    );
-  };
+    )
+  }
 
   return (
     <>
       <div
-        className={showAddModal ? "modal active" : "modal"}
-        onClick={() => setShowAddModal(false)}
+        className={showAddModal ? 'modal active' : 'modal'}
+        onClick={() => { setShowAddModal(false) }}
       >
         <div
-          className={showAddModal ? "modal-content active" : "modal-content"}
-          onClick={e => e.stopPropagation()}
+          className={showAddModal ? 'modal-content active' : 'modal-content'}
+          onClick={e => { e.stopPropagation() }}
         >
           <button
             type="button"
             className="btn btn-close float-end mb-4"
             aria-label="Close"
-            onClick={() => setShowAddModal(false)}
+            onClick={() => { setShowAddModal(false) }}
           />
           <h3 className=".mb-0">Add</h3>
 
@@ -76,7 +76,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                   className="form-control"
                   placeholder="Chart name"
                   onChange={event => {
-                    setChartName(event.target.value);
+                    setChartName(event.target.value)
                   }}
                 />
               </div>
@@ -93,8 +93,8 @@ const ModalAddChart: React.FC<ModalProps> = ({
                   {selectModalData.typeOptions.map(
                     (
                       option: {
-                        value: string;
-                        label: string;
+                        value: string
+                        label: string
                       },
                       index: number
                     ) => (
@@ -112,7 +112,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                 </label>
                 <select
                   className="form-select"
-                  onChange={event => handleChangeChartDataName(event)}
+                  onChange={event => { handleChangeChartDataName(event) }}
                 >
                   {Object.keys(chartsDataValue).map((chart, index) => {
                     return (
@@ -122,7 +122,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                         value={chart}
                         label={chart}
                       ></option>
-                    );
+                    )
                   })}
                 </select>
               </div>
@@ -135,7 +135,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                   className="w-100"
                   color={chartColor}
                   onChangeComplete={color => {
-                    setChartColor(color.hex);
+                    setChartColor(color.hex)
                   }}
                 />
               </div>
@@ -152,7 +152,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ModalAddChart;
+export default ModalAddChart

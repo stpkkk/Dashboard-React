@@ -1,6 +1,6 @@
-import React from "react";
-import { FaReact } from "react-icons/fa";
-import "../index.css";
+import React from 'react'
+import { FaReact } from 'react-icons/fa'
+import '../index.css'
 
 const About: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const About: React.FC = () => {
         <FaReact size={150} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

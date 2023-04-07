@@ -1,10 +1,10 @@
-import React from "react";
-import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import "../../index.css";
+import React from 'react'
+import { FaBars } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import '../../index.css'
 
 interface HeaderProps {
-  showSidebar: () => void;
+  showSidebar: () => void
 }
 
 const Header: React.FC<HeaderProps> = ({ showSidebar }: HeaderProps) => {
@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ showSidebar }: HeaderProps) => {
         </Link>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
