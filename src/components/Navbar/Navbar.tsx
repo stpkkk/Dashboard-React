@@ -1,6 +1,6 @@
 import React, { UIEventHandler } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.scss";
+import "./Navbar.css";
 import { SidebarData } from "../../data/sidebarData";
 
 interface SidebarProps {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Modal.scss";
+import "./Modal.css";
 import { CompactPicker } from "react-color";
 import { addChart } from "../../redux/chartsSlice";
 import { useDispatch } from "react-redux";
@@ -54,7 +54,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
       >
         <div
           className={showAddModal ? "modal-content active" : "modal-content"}
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
         >
           <button
             type="button"
@@ -75,7 +75,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                   id=""
                   className="form-control"
                   placeholder="Chart name"
-                  onChange={(event) => {
+                  onChange={event => {
                     setChartName(event.target.value);
                   }}
                 />
@@ -112,7 +112,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                 </label>
                 <select
                   className="form-select"
-                  onChange={(event) => handleChangeChartDataName(event)}
+                  onChange={event => handleChangeChartDataName(event)}
                 >
                   {Object.keys(chartsDataValue).map((chart, index) => {
                     return (
@@ -134,7 +134,7 @@ const ModalAddChart: React.FC<ModalProps> = ({
                 <CompactPicker
                   className="w-100"
                   color={chartColor}
-                  onChangeComplete={(color) => {
+                  onChangeComplete={color => {
                     setChartColor(color.hex);
                   }}
                 />

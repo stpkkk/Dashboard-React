@@ -1,6 +1,6 @@
 import React from "react";
 import { FaReact } from "react-icons/fa";
-import "../index.scss";
+import "../index.css";
 
 const About: React.FC = () => {
   return (
