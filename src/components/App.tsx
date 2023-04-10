@@ -6,7 +6,7 @@ import Header from './Header/Header';
 import Settings from '../pages/Settings';
 import Navbar from './Navbar/Navbar';
 
-export const App: React.FC = (): JSX.Element => {
+export const App: React.FC = () => {
   const [sidebar, setSidebar] = useState<boolean>(false);
 
   const showSidebar = () => {
