@@ -1,35 +1,37 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { type IChart } from '../models'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IChart } from '../models';
 
-const initialState: IChart[] = []
+const initialState: IChart[] = [];
 
 export const chartSlice = createSlice({
   name: 'charts',
   initialState,
   reducers: {
     addChart: (state, action: PayloadAction<IChart>) => {
-      state.push(action.payload)
-      //   return  [...state, action.payload];
+      state.push(action.payload);
     },
-    deleteChart: (state, action: PayloadAction<IChart>) => {
-      return state.filter((chart: IChart) => chart.id !== action.payload.id)
-    },
+    deleteChart: (state, action: PayloadAction<IChart>) =>
+      state.filter((chart: IChart) => chart.id !== action.payload.id),
 
     editChart: (state, action: PayloadAction<IChart>) => {
-      state.map((chart: IChart) => {
-        if (chart.id === action.payload.id) {
-          chart.name = action.payload.name
-          chart.type = action.payload.type
-          chart.data = action.payload.data
-          chart.color = action.payload.color
+      const { id, name, type, data, color } = action.payload;
+      return state.map((chart: IChart) => {
+        if (chart.id === id) {
+          return {
+            ...chart,
+            name,
+            type,
+            data,
+            color,
+          };
         }
-        return state
-      })
-    }
-  }
-})
+        return chart;
+      });
+    },
+  },
+});
 
-export const selectCharts = (state: { charts: any }) => state.charts
+export const selectCharts = (state: { charts: any }) => state.charts;
 
-export const { addChart, deleteChart, editChart } = chartSlice.actions
-export default chartSlice.reducer
+export const { addChart, deleteChart, editChart } = chartSlice.actions;
+export default chartSlice.reducer;

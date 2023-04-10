@@ -1,34 +1,34 @@
-import React, { useState } from 'react'
-import './Modal.css'
-import { CompactPicker } from 'react-color'
-import { editChart } from '../../redux/chartsSlice'
-import { useAppDispatch } from '../../redux/hooks'
-import { selectModalData } from '../../data/selectModalData'
-import { chartsDataValue } from '../../data/chartsData'
+import React, { useState } from 'react';
+import './Modal.css';
+import { CompactPicker } from 'react-color';
+import { editChart } from '../../redux/chartsSlice';
+import { useAppDispatch } from '../../redux/hooks';
+import { selectModalData } from '../../data/selectModalData';
+import { chartsData } from '../../data/chartsData';
 
 interface ModalEditProps {
-  showEditModal: boolean
-  setShowEditModal: (value: boolean) => void
+  showEditModal: boolean;
+  setShowEditModal: (value: boolean) => void;
   chart: {
-    id: string
-    name: string
-    type: string
-    data: number[][]
-    color: string
-  }
+    id: string;
+    name: string;
+    type: string;
+    data: number[][];
+    color: string;
+  };
 }
 
 const ModalEditChart: React.FC<ModalEditProps> = ({
   chart,
   showEditModal,
-  setShowEditModal
+  setShowEditModal,
 }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const [newChartName, setNewChartName] = useState<string>('')
-  const [newChartType, setNewChartType] = useState<string>('')
-  const [newChartDataName, setNewChartDataName] = useState<string>('')
-  const [newChartColor, setNewChartColor] = useState<string>('')
+  const [newChartName, setNewChartName] = useState<string>('');
+  const [newChartType, setNewChartType] = useState<string>('');
+  const [newChartDataName, setNewChartDataName] = useState<string>('');
+  const [newChartColor, setNewChartColor] = useState<string>('');
 
   const handleChange = () => {
     dispatch(
@@ -36,130 +36,166 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
         id: chart.id,
         name: newChartName,
         type: newChartType,
-        data: chartsDataValue[newChartDataName],
-        color: newChartColor
+        data: chartsData[newChartDataName],
+        color: newChartColor,
       })
-    )
-    setShowEditModal(false)
-  }
+    );
+    setShowEditModal(false);
+  };
 
   const handleChangeNewChartType = (event: {
-    target: { value: React.SetStateAction<string> }
+    target: { value: React.SetStateAction<string> };
   }) => {
-    setNewChartType(event.target.value)
-  }
+    setNewChartType(event.target.value);
+  };
+
   const handleChangeNewChartDataName = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setNewChartDataName(event.target.value)
-  }
+    setNewChartDataName(event.target.value);
+  };
+
+  const handleClickOpenModal = () => {
+    setShowEditModal(false);
+  };
+
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      setShowEditModal(false);
+    }
+  };
 
   return (
-    <>
+    <div
+      className={showEditModal ? 'modal active' : 'modal'}
+      role="button"
+      tabIndex={0}
+      onClick={handleClickOpenModal}
+      onKeyDown={handleKeyDown}
+    >
       <div
-        className={showEditModal ? 'modal active' : 'modal'}
-        onClick={() => { setShowEditModal(false) }}
+        className={showEditModal ? 'modal-content active' : 'modal-content'}
+        role="button"
+        tabIndex={-1}
+        onKeyDown={handleKeyDown}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        <div
-          className={showEditModal ? 'modal-content active' : 'modal-content'}
-          onClick={e => { e.stopPropagation() }}
-        >
-          <button
-            type="button"
-            className="btn btn-close float-end mb-4"
-            aria-label="Close"
-            onClick={() => { setShowEditModal(false) }}
-          />
-          <h3 className=".mb-0">Edit</h3>
+        <button
+          type="button"
+          className="btn btn-close float-end mb-4"
+          aria-label="Close"
+          onClick={() => {
+            setShowEditModal(false);
+          }}
+        />
+        <h3 className=".mb-0">Edit</h3>
 
-          <form>
-            <fieldset className="mb-2">
-              <div className="mb-3 chart-name">
-                <label htmlFor="" className="form-label">
-                  Chart name:
-                </label>
+        <form>
+          <fieldset className="mb-2">
+            <div className="mb-3 chart-name">
+              <label
+                htmlFor="chart-name"
+                className="form-label"
+                aria-label="chart-name"
+                tabIndex={-2}
+              >
+                Chart name:
                 <input
                   type="text"
                   placeholder={chart.name}
                   className="form-control"
-                  onChange={event => {
-                    setNewChartName(event.target.value)
+                  onChange={(event) => {
+                    setNewChartName(event.target.value);
                   }}
+                  id="chart-name"
+                  name={chart.name}
                 />
-              </div>
+              </label>
+            </div>
 
-              <div className="mb-3 chart-type">
-                <label htmlFor="" className="form-label">
-                  Chart type:
-                </label>
+            <div className="mb-3 chart-type">
+              <label
+                htmlFor="chart-type"
+                className="form-label"
+                aria-label="chart-type"
+                tabIndex={-3}
+              >
+                Chart type:
                 <select
+                  id="chart-type"
                   className="form-select"
                   onChange={handleChangeNewChartType}
                   value={chart.type}
                 >
                   {selectModalData.typeOptions.map(
-                    (
-                      option: {
-                        value: string
-                        label: string
-                      },
-                      index: number
-                    ) => (
-                      <option key={`id${index}`} value={option.value}>
+                    (option: { id: number; value: string; label: string }) => (
+                      <option key={option.id} value={option.value}>
                         {option.label}
                       </option>
                     )
                   )}
                 </select>
-              </div>
+              </label>
+            </div>
 
-              <div className="mb-3 chart-data">
-                <label htmlFor="" className="form-label">
-                  Chart data:
-                </label>
+            <div className="mb-3 chart-data">
+              <label
+                className="form-label"
+                htmlFor="chart-data"
+                aria-label="chart-data"
+                tabIndex={-4}
+              >
+                Chart data:
                 <select
                   className="form-select"
-                  onChange={event => { handleChangeNewChartDataName(event) }}
-                >
-                  {Object.keys(chartsDataValue).map((chart, index) => {
-                    return (
-                      <option
-                        className="modal-select-option"
-                        key={`id${index}`}
-                        value={chart}
-                        label={chart}
-                      ></option>
-                    )
-                  })}
-                </select>
-              </div>
-
-              <div className="mb-3 chart-color">
-                <label htmlFor="" className="form-label">
-                  Chart color:
-                </label>
-                <CompactPicker
-                  className="w-100"
-                  color={newChartColor}
-                  onChangeComplete={color => {
-                    setNewChartColor(color.hex)
+                  id="chart-data"
+                  onChange={(event) => {
+                    handleChangeNewChartDataName(event);
                   }}
-                />
-              </div>
+                >
+                  {Object.keys(chartsData).map((date) => (
+                    <option
+                      className="modal-select-option"
+                      key={date}
+                      value={date}
+                      label={date}
+                    />
+                  ))}
+                </select>
+              </label>
+            </div>
 
-              <button
-                type="button"
-                className="btn btn-primary "
-                onClick={handleChange}
+            <div className="mb-3 chart-color">
+              <span
+                className="form-label"
+                aria-label="chart-color"
+                tabIndex={-4}
               >
-                Confirm
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </>
-  )
-}
+                Chart color:
+              </span>
+              <CompactPicker
+                className="w-100"
+                color={newChartColor}
+                onChangeComplete={(color) => {
+                  setNewChartColor(color.hex);
+                }}
+              />
+            </div>
 
-export default ModalEditChart
+            <button
+              type="button"
+              className="btn btn-primary "
+              onClick={handleChange}
+            >
+              Confirm
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ModalEditChart;

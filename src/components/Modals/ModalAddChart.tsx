@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Modal.css';
 import { CompactPicker } from 'react-color';
-import { addChart } from '../../redux/chartsSlice';
 import { useDispatch } from 'react-redux';
-import { chartsDataValue } from '../../data/chartsData';
+import { addChart } from '../../redux/chartsSlice';
+import { chartsData } from '../../data/chartsData';
 import { selectModalData } from '../../data/selectModalData';
 
 interface ModalProps {
@@ -41,125 +41,149 @@ const ModalAddChart: React.FC<ModalProps> = ({
         name: chartName,
         color: chartColor,
         type: chartType,
-        data: chartsDataValue[chartDataName],
+        data: chartsData[chartDataName],
       })
     );
   };
 
+  const handleClickOpenModal = () => {
+    setShowAddModal(false);
+  };
+
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      setShowAddModal(false);
+    }
+  };
+
   return (
-    <>
+    <div
+      className={showAddModal ? 'modal active' : 'modal'}
+      role="button"
+      tabIndex={0}
+      onClick={handleClickOpenModal}
+      onKeyDown={handleKeyDown}
+    >
       <div
-        className={showAddModal ? 'modal active' : 'modal'}
-        onClick={() => {
-          setShowAddModal(false);
+        className={showAddModal ? 'modal-content active' : 'modal-content'}
+        role="button"
+        tabIndex={-1}
+        onKeyDown={handleKeyDown}
+        onClick={(e) => {
+          e.stopPropagation();
         }}
       >
-        <div
-          className={showAddModal ? 'modal-content active' : 'modal-content'}
-          onClick={(e) => {
-            e.stopPropagation();
+        <button
+          className="btn btn-close float-end mb-4"
+          type="button"
+          aria-label="Close"
+          onClick={() => {
+            setShowAddModal(false);
           }}
-        >
-          <button
-            type="button"
-            className="btn btn-close float-end mb-4"
-            aria-label="Close"
-            onClick={() => {
-              setShowAddModal(false);
-            }}
-          />
-          <h3 className=".mb-0">Add</h3>
+        />
+        <h3 className=".mb-0">Add</h3>
 
-          <form>
-            <fieldset className="mb-2">
-              <div className="mb-3 chart-name">
-                <label htmlFor="" className="form-label">
-                  Chart name:
-                </label>
+        <form>
+          <fieldset className="mb-2 ">
+            <div className="mb-3 chart-name ">
+              <label
+                htmlFor="chart-name"
+                className="form-label  mr-auto  w-100"
+                aria-label="chart-name"
+                tabIndex={-2}
+              >
+                Chart name:
                 <input
                   type="text"
-                  id=""
-                  className="form-control"
+                  id="chart-name"
+                  className="form-control "
                   placeholder="Chart name"
                   onChange={(event) => {
                     setChartName(event.target.value);
                   }}
                 />
-              </div>
+              </label>
+            </div>
 
-              <div className="mb-3 chart-type">
-                <label htmlFor="" className="form-label">
-                  Chart type:
-                </label>
+            <div className="mb-3 chart-type">
+              <label
+                htmlFor="chart-type"
+                className="form-label  mr-auto  w-100"
+                aria-label="chart-type"
+                tabIndex={-3}
+              >
+                Chart type:
                 <select
+                  id="chart-type"
                   className="form-select"
                   onChange={handleChangeChartType}
                   value={chartType}
                 >
                   {selectModalData.typeOptions.map(
-                    (
-                      option: {
-                        value: string;
-                        label: string;
-                      },
-                      index: number
-                    ) => (
-                      <option key={`id${index}`} value={option.value}>
+                    (option: { id: number; value: string; label: string }) => (
+                      <option key={option.id} value={option.value}>
                         {option.label}
                       </option>
                     )
                   )}
                 </select>
-              </div>
+              </label>
+            </div>
 
-              <div className="mb-3 chart-data">
-                <label htmlFor="" className="form-label">
-                  Chart data:
-                </label>
+            <div className="mb-3 chart-data">
+              <label
+                className="form-label  mr-auto  w-100"
+                htmlFor="chart-data"
+                aria-label="chart-data"
+                tabIndex={-4}
+              >
+                Chart data:
                 <select
                   className="form-select"
                   onChange={(event) => {
                     handleChangeChartDataName(event);
                   }}
                 >
-                  {Object.keys(chartsDataValue).map((chart, index) => {
-                    return (
-                      <option
-                        className="modal-select-option"
-                        key={`id${index}`}
-                        value={chart}
-                        label={chart}
-                      ></option>
-                    );
-                  })}
+                  {Object.keys(chartsData).map((date) => (
+                    <option
+                      className="modal-select-option "
+                      key={date}
+                      value={date}
+                      label={date}
+                    />
+                  ))}
                 </select>
-              </div>
+              </label>
+            </div>
 
-              <div className="mb-3 chart-color">
-                <label htmlFor="" className="form-label">
-                  Chart color:
-                </label>
-                <CompactPicker
-                  className="w-100"
-                  color={chartColor}
-                  onChangeComplete={(color) => {
-                    setChartColor(color.hex);
-                  }}
-                />
-              </div>
-
-              <button
-                type="button"
-                className="btn btn-primary "
-                onClick={handleChange}
+            <div className="mb-3 chart-color">
+              <span
+                className="form-label"
+                aria-label="chart-color"
+                tabIndex={-4}
               >
-                Confirm
-              </button>
-            </fieldset>
-          </form>
-        </div>
+                Chart color:
+              </span>
+              <CompactPicker
+                className="w-100"
+                color={chartColor}
+                onChangeComplete={(color) => {
+                  setChartColor(color.hex);
+                }}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="btn btn-primary "
+              onClick={handleChange}
+            >
+              Confirm
+            </button>
+          </fieldset>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 

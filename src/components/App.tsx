@@ -17,7 +17,7 @@ export const App: React.FC = () => {
     <>
       <Header showSidebar={showSidebar} />
       <div className="wrapper">
-        <Navbar showSidebar={showSidebar} sidebar={sidebar} />
+        <Navbar sidebar={sidebar} />
         <Routes>
           <Route path="/" element={<ViewMode />} />
           <Route path="/settings" element={<Settings />} />

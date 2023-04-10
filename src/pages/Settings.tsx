@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import ChartList from '../components/ChartList/ChartList'
-import ModalAddChart from '../components/Modals/ModalAddChart'
+import ChartList from '../components/ChartList/ChartList';
+import ModalAddChart from '../components/Modals/ModalAddChart';
 
 const Settings: React.FC = () => {
-  const [showAddModal, setShowAddModal] = useState(false)
+  const [showAddModal, setShowAddModal] = useState(false);
 
   return (
     <div className="settings">
@@ -15,7 +15,9 @@ const Settings: React.FC = () => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => { setShowAddModal(true) }}
+          onClick={() => {
+            setShowAddModal(true);
+          }}
         >
           Add chart
         </button>
@@ -27,7 +29,7 @@ const Settings: React.FC = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;

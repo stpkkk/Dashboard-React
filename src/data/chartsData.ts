@@ -1,6 +1,6 @@
-type ChartsDataType = Record<string, number[][]>
+type ChartsDataType = Record<string, number[][]>;
 
-export const chartsDataValue: ChartsDataType = {
+export const chartsData: ChartsDataType = {
   data1: [
     [Date.UTC(2020, 0, 1), 162],
     [Date.UTC(2020, 1, 1), 120],
@@ -37,7 +37,7 @@ export const chartsDataValue: ChartsDataType = {
     [Date.UTC(2022, 8, 1), 666],
     [Date.UTC(2022, 9, 1), 320],
     [Date.UTC(2022, 10, 1), 120],
-    [Date.UTC(2022, 11, 1), 244]
+    [Date.UTC(2022, 11, 1), 244],
   ],
   data2: [
     [Date.UTC(2020, 0, 1), 20],
@@ -75,7 +75,7 @@ export const chartsDataValue: ChartsDataType = {
     [Date.UTC(2022, 8, 1), 33],
     [Date.UTC(2022, 9, 1), 122],
     [Date.UTC(2022, 10, 1), 50],
-    [Date.UTC(2022, 11, 1), 85]
+    [Date.UTC(2022, 11, 1), 85],
   ],
   data3: [
     [Date.UTC(2020, 0, 1), 74],
@@ -113,7 +113,7 @@ export const chartsDataValue: ChartsDataType = {
     [Date.UTC(2022, 8, 1), 700],
     [Date.UTC(2022, 9, 1), 50],
     [Date.UTC(2022, 10, 1), 125],
-    [Date.UTC(2022, 11, 1), 250]
+    [Date.UTC(2022, 11, 1), 250],
   ],
 
   data4: [
@@ -152,7 +152,7 @@ export const chartsDataValue: ChartsDataType = {
     [Date.UTC(2022, 8, 1), 74],
     [Date.UTC(2022, 9, 1), 150],
     [Date.UTC(2022, 10, 1), 6],
-    [Date.UTC(2022, 11, 1), 28]
+    [Date.UTC(2022, 11, 1), 28],
   ],
   data5: [
     [Date.UTC(2020, 0, 1), 250],
@@ -190,6 +190,6 @@ export const chartsDataValue: ChartsDataType = {
     [Date.UTC(2022, 8, 1), 185],
     [Date.UTC(2022, 9, 1), 220],
     [Date.UTC(2022, 10, 1), 190],
-    [Date.UTC(2022, 11, 1), 100]
-  ]
-}
+    [Date.UTC(2022, 11, 1), 100],
+  ],
+};
