@@ -94,10 +94,10 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
 
         <form>
           <fieldset className="mb-2">
-            <div className="mb-3 chart-name">
+            <div className="mb-3 chart-name  mr-auto  w-100">
               <label
                 htmlFor="chart-name"
-                className="form-label"
+                className="form-label mr-auto  w-100"
                 aria-label="chart-name"
                 tabIndex={-2}
               >
@@ -118,7 +118,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
             <div className="mb-3 chart-type">
               <label
                 htmlFor="chart-type"
-                className="form-label"
+                className="form-label mr-auto w-100"
                 aria-label="chart-type"
                 tabIndex={-3}
               >
@@ -142,7 +142,7 @@ const ModalEditChart: React.FC<ModalEditProps> = ({
 
             <div className="mb-3 chart-data">
               <label
-                className="form-label"
+                className="form-label  mr-auto w-100"
                 htmlFor="chart-data"
                 aria-label="chart-data"
                 tabIndex={-4}
