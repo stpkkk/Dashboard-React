@@ -1,13 +1,12 @@
+import React from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiOutlineEmojiSad } from 'react-icons/hi';
-import ChartList from '../components/ChartList/ChartList';
-import { useAppSelector } from '../redux/hooks';
-import { selectCharts } from '../redux/chartsSlice';
+import { useAppSelector, selectCharts } from '../redux';
+import { ChartList } from '../components';
 
-const ViewMode: React.FC = () => {
+export const ChartsPage: React.FC = () => {
   const chartListRedux = useAppSelector(selectCharts);
 
   const options = {
@@ -50,7 +49,7 @@ const ViewMode: React.FC = () => {
 
   return (
     <div className="home">
-      <h2 className="text-center mb-4">View Mode</h2>
+      <h2 className="text-center mb-4">Charts</h2>
       {chartListRedux.length > 0 ? (
         <div className="max-width:1200px">
           <HighchartsReact
@@ -78,5 +77,3 @@ const ViewMode: React.FC = () => {
     </div>
   );
 };
-
-export default ViewMode;

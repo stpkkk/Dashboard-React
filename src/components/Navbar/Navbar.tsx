@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { UIEventHandler, KeyboardEventHandler } from 'react';
 import { Link } from 'react-router-dom';
+import { NavbarData } from '../../data';
 import './Navbar.css';
-import { SidebarData } from '../../data/sidebarData';
 
 interface SidebarProps {
   sidebar: boolean;
+  showSidebar: UIEventHandler;
 }
 
-const Navbar: React.FC<SidebarProps> = ({ sidebar }: SidebarProps) => (
-  <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-    <ul className="nav-menu-items">
-      {SidebarData.map((item) => (
-        <li key={item.path} className={item.clName}>
-          <Link to={item.path}>
-            {item.icon}
-            <span>{item.title}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+export const Navbar: React.FC<SidebarProps> = ({
+  sidebar,
+  showSidebar,
+}: SidebarProps) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      showSidebar(event);
+    }
+  };
 
-export default Navbar;
+  return (
+    <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+      <ul className="nav-menu-items">
+        {NavbarData.map((item) => (
+          <li key={item.path} className="nav-text">
+            <Link
+              to={item.path}
+              onClick={showSidebar}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+              role="button"
+            >
+              {item.icon}
+              <span>{item.title}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaReact } from 'react-icons/fa';
 import '../index.css';
 
-const About: React.FC = () => (
+export const AboutPage: React.FC = () => (
   <div>
     <h2 className="text-center mb-4">About</h2>
     <p className="h-100 d-flex align-items-center justify-content-center">
@@ -13,5 +13,3 @@ const About: React.FC = () => (
     </div>
   </div>
 );
-
-export default About;

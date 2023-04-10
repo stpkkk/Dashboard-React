@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IChart } from '../models';
+import { IChart } from '../models/models';
 
 const initialState: IChart[] = [];
 

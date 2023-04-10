@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import './Modal.css';
 import { CompactPicker } from 'react-color';
 import { useDispatch } from 'react-redux';
-import { addChart } from '../../redux/chartsSlice';
-import { chartsData } from '../../data/chartsData';
-import { selectModalData } from '../../data/selectModalData';
+import { addChart } from '../../redux';
+import { chartsData, selectModalData } from '../../data';
+import './Modal.css';
 
 interface ModalProps {
   showAddModal: boolean;
   setShowAddModal: (name: boolean) => void;
 }
 
-const ModalAddChart: React.FC<ModalProps> = ({
+export const ModalAddChart: React.FC<ModalProps> = ({
   showAddModal,
   setShowAddModal,
 }) => {
@@ -186,5 +185,3 @@ const ModalAddChart: React.FC<ModalProps> = ({
     </div>
   );
 };
-
-export default ModalAddChart;

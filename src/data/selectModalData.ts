@@ -1,4 +1,4 @@
-import { type ISelectModal } from '../models';
+import { type ISelectModal } from '../models/models';
 
 interface selectModalDataType {
   typeOptions: ISelectModal[];

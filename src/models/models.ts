@@ -12,7 +12,6 @@ export interface ISidebar {
   title: string;
   path: string;
   icon: React.ReactElement;
-  clName: string;
 }
 
 export interface ISelectModal {

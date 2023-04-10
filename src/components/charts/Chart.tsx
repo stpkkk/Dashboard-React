@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteChart } from '../../redux/chartsSlice';
-import ModalEditChart from '../Modals/ModalEditChart';
+import { deleteChart } from '../../redux';
+import { ModalEditChart } from '../modals';
 
-interface ChartItemProps {
+interface ChartProps {
   chart: {
     id: string;
     name: string;
@@ -13,7 +13,7 @@ interface ChartItemProps {
   };
 }
 
-const ChartItem: React.FC<ChartItemProps> = ({ chart }: ChartItemProps) => {
+export const Chart: React.FC<ChartProps> = ({ chart }: ChartProps) => {
   const [showEditModal, setShowEditModal] = useState<boolean>(false);
   const dispatch = useDispatch();
 
@@ -66,5 +66,3 @@ const ChartItem: React.FC<ChartItemProps> = ({ chart }: ChartItemProps) => {
     </li>
   );
 };
-
-export default ChartItem;

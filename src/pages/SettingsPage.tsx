@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
+import { ChartList, ModalAddChart } from '../components';
 
-import ChartList from '../components/ChartList/ChartList';
-import ModalAddChart from '../components/Modals/ModalAddChart';
-
-const Settings: React.FC = () => {
+export const SettingsPage: React.FC = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   return (
@@ -31,5 +29,3 @@ const Settings: React.FC = () => {
     </div>
   );
 };
-
-export default Settings;
