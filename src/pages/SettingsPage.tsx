@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { ChartList, ModalAddChart } from '../components';
+import { AppContext } from '../context';
 
 export const SettingsPage: React.FC = () => {
-  const [showAddModal, setShowAddModal] = useState(false);
+  const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
 
   return (
     <div className="settings">
@@ -14,18 +15,13 @@ export const SettingsPage: React.FC = () => {
           type="button"
           className="btn btn-primary"
           onClick={() => {
-            setShowAddModal(true);
+            setOpenPopUp(true);
           }}
         >
           Add chart
         </button>
       </div>
-      {showAddModal && (
-        <ModalAddChart
-          showAddModal={showAddModal}
-          setShowAddModal={setShowAddModal}
-        />
-      )}
+      {isOpenPopUp && <ModalAddChart />}
     </div>
   );
 };

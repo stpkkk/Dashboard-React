@@ -1,3 +1,11 @@
-import React from 'react';
+import { createContext } from 'react';
 
-export const AppContext = React.createContext({});
+export type GlobalContent = {
+  setOpenPopUp: (value: boolean) => void;
+  isOpenPopUp: boolean;
+};
+
+export const AppContext = createContext<GlobalContent>({
+  setOpenPopUp: () => {},
+  isOpenPopUp: false,
+});

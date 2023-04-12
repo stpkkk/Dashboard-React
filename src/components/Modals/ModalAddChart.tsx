@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { CompactPicker } from 'react-color';
 import { useDispatch } from 'react-redux';
 import { addChart } from '../../redux';
 import { chartsData, selectModalData } from '../../data';
 import './Modal.css';
+import { AppContext } from '../../context';
 
-interface ModalProps {
-  showAddModal: boolean;
-  setShowAddModal: (name: boolean) => void;
-}
-
-export const ModalAddChart: React.FC<ModalProps> = ({
-  showAddModal,
-  setShowAddModal,
-}) => {
+export const ModalAddChart: React.FC = () => {
   const dispatch = useDispatch();
+  const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
 
   const [chartColor, setChartColor] = useState<string>('#a53c82');
   const [chartName, setChartName] = useState<string>('');
@@ -33,7 +27,7 @@ export const ModalAddChart: React.FC<ModalProps> = ({
   };
 
   const handleChange = () => {
-    setShowAddModal(false);
+    setOpenPopUp(false);
     dispatch(
       addChart({
         id: Math.random().toString().substr(2, 2),
@@ -46,25 +40,25 @@ export const ModalAddChart: React.FC<ModalProps> = ({
   };
 
   const handleClickOpenModal = () => {
-    setShowAddModal(false);
+    setOpenPopUp(false);
   };
 
   const handleKeyDown = (e: { key: string }) => {
     if (e.key === 'Enter' || e.key === 'Space') {
-      setShowAddModal(false);
+      setOpenPopUp(false);
     }
   };
 
   return (
     <div
-      className={showAddModal ? 'modal active' : 'modal'}
+      className={isOpenPopUp ? 'modal active' : 'modal'}
       role="button"
       tabIndex={0}
       onClick={handleClickOpenModal}
       onKeyDown={handleKeyDown}
     >
       <div
-        className={showAddModal ? 'modal-content active' : 'modal-content'}
+        className={isOpenPopUp ? 'modal-content active' : 'modal-content'}
         role="button"
         tabIndex={-1}
         onKeyDown={handleKeyDown}
@@ -77,7 +71,7 @@ export const ModalAddChart: React.FC<ModalProps> = ({
           type="button"
           aria-label="Close"
           onClick={() => {
-            setShowAddModal(false);
+            setOpenPopUp(false);
           }}
         />
         <h3 className=".mb-0">Add</h3>
