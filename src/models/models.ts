@@ -19,3 +19,13 @@ export interface ISelectModal {
   value: string;
   label: string;
 }
+
+export interface ModalProps {
+  chart: {
+    id: string;
+    name: string;
+    type: string;
+    data: number[][];
+    color: string;
+  };
+}

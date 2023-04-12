@@ -20,6 +20,7 @@ export const ModalAddChart: React.FC = () => {
   }) => {
     setChartType(event.target.value);
   };
+
   const handleChangeChartDataName = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {

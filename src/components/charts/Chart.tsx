@@ -3,18 +3,9 @@ import { useDispatch } from 'react-redux';
 import { deleteChart } from '../../redux';
 import { ModalEditChart } from '../modals';
 import { AppContext } from '../../context';
+import { ModalProps } from '../../models';
 
-interface ChartProps {
-  chart: {
-    id: string;
-    name: string;
-    type: string;
-    data: number[][];
-    color: string;
-  };
-}
-
-export const Chart: React.FC<ChartProps> = ({ chart }: ChartProps) => {
+export const Chart: React.FC<ModalProps> = ({ chart }: ModalProps) => {
   const dispatch = useDispatch();
   const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
 
