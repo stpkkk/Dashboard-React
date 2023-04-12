@@ -1,11 +1,15 @@
 import { createContext } from 'react';
 
 export type GlobalContent = {
-  setOpenPopUp: (value: boolean) => void;
-  isOpenPopUp: boolean;
+  setModal: (value: boolean) => void;
+  isModal: boolean;
+  handleKeyDown: any;
+  handleClickCloseModal: any;
 };
 
 export const AppContext = createContext<GlobalContent>({
-  setOpenPopUp: () => {},
-  isOpenPopUp: false,
+  setModal: () => {},
+  isModal: false,
+  handleKeyDown: () => {},
+  handleClickCloseModal: () => {},
 });

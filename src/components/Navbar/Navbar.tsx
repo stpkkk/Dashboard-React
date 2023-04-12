@@ -4,12 +4,12 @@ import { NavbarData } from '../../data';
 import './Navbar.css';
 
 interface SidebarProps {
-  sidebar: boolean;
+  isSidebar: boolean;
   showSidebar: UIEventHandler;
 }
 
 export const Navbar: React.FC<SidebarProps> = ({
-  sidebar,
+  isSidebar,
   showSidebar,
 }: SidebarProps) => {
   const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
@@ -19,7 +19,7 @@ export const Navbar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+    <nav className={isSidebar ? 'nav-menu active' : 'nav-menu'}>
       <ul className="nav-menu-items">
         {NavbarData.map((item) => (
           <li key={item.path} className="nav-text">

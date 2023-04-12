@@ -8,7 +8,8 @@ import { AppContext } from '../../context';
 
 export const ModalAddChart: React.FC = () => {
   const dispatch = useDispatch();
-  const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
+  const { isModal, setModal, handleKeyDown, handleClickCloseModal } =
+    useContext(AppContext);
 
   const [chartColor, setChartColor] = useState<string>('#a53c82');
   const [chartName, setChartName] = useState<string>('');
@@ -28,7 +29,6 @@ export const ModalAddChart: React.FC = () => {
   };
 
   const handleChange = () => {
-    setOpenPopUp(false);
     dispatch(
       addChart({
         id: Math.random().toString().substr(2, 2),
@@ -38,28 +38,19 @@ export const ModalAddChart: React.FC = () => {
         data: chartsData[chartDataName],
       })
     );
-  };
-
-  const handleClickOpenModal = () => {
-    setOpenPopUp(false);
-  };
-
-  const handleKeyDown = (e: { key: string }) => {
-    if (e.key === 'Enter' || e.key === 'Space') {
-      setOpenPopUp(false);
-    }
+    setModal(false);
   };
 
   return (
     <div
-      className={isOpenPopUp ? 'modal active' : 'modal'}
+      className={isModal ? 'modal active' : 'modal'}
       role="button"
       tabIndex={0}
-      onClick={handleClickOpenModal}
+      onClick={handleClickCloseModal}
       onKeyDown={handleKeyDown}
     >
       <div
-        className={isOpenPopUp ? 'modal-content active' : 'modal-content'}
+        className={isModal ? 'modal-content active' : 'modal-content'}
         role="button"
         tabIndex={-1}
         onKeyDown={handleKeyDown}
@@ -72,7 +63,7 @@ export const ModalAddChart: React.FC = () => {
           type="button"
           aria-label="Close"
           onClick={() => {
-            setOpenPopUp(false);
+            setModal(false);
           }}
         />
         <h3 className=".mb-0">Add</h3>

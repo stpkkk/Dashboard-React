@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteChart } from '../../redux';
 import { ModalEditChart } from '../modals';
-import { AppContext } from '../../context';
 import { ModalProps } from '../../models';
 
 export const Chart: React.FC<ModalProps> = ({ chart }: ModalProps) => {
   const dispatch = useDispatch();
-  const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
+  const [isModalEdit, setModalEdit] = useState<boolean>(false);
 
   return (
     <li
@@ -24,7 +23,7 @@ export const Chart: React.FC<ModalProps> = ({ chart }: ModalProps) => {
         type="button"
         className="btn btn-light me-2 btn-block"
         onClick={() => {
-          setOpenPopUp(true);
+          setModalEdit(true);
         }}
       >
         Edit
@@ -48,7 +47,13 @@ export const Chart: React.FC<ModalProps> = ({ chart }: ModalProps) => {
         Delete
       </button>
 
-      {isOpenPopUp && <ModalEditChart chart={chart} />}
+      {isModalEdit && (
+        <ModalEditChart
+          chart={chart}
+          isModalEdit={isModalEdit}
+          setModalEdit={setModalEdit}
+        />
+      )}
     </li>
   );
 };

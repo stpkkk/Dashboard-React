@@ -5,26 +5,38 @@ import { Header, Navbar } from './index';
 import { AppContext } from '../context';
 
 export const App: React.FC = () => {
-  const [sidebar, isSidebar] = useState<boolean>(false);
-  const [isOpenPopUp, setOpenPopUp] = useState<boolean>(false);
+  const [isSidebar, setSidebar] = useState<boolean>(false);
+  const [isModal, setModal] = useState<boolean>(false);
 
   const showSidebar = () => {
-    isSidebar(!sidebar);
+    setSidebar(!isSidebar);
+  };
+
+  const handleClickCloseModal = () => {
+    setModal(false);
+  };
+
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      setModal(false);
+    }
   };
 
   const contextValue = useMemo(
     () => ({
-      isOpenPopUp,
-      setOpenPopUp,
+      isModal,
+      setModal,
+      handleClickCloseModal,
+      handleKeyDown,
     }),
-    [isOpenPopUp, setOpenPopUp]
+    [isModal, setModal]
   );
 
   return (
     <AppContext.Provider value={contextValue}>
       <Header showSidebar={showSidebar} />
       <div className="wrapper">
-        <Navbar sidebar={sidebar} showSidebar={showSidebar} />
+        <Navbar isSidebar={isSidebar} showSidebar={showSidebar} />
         <Routes>
           <Route path="/" element={<ChartsPage />} />
           <Route path="/settings" element={<SettingsPage />} />

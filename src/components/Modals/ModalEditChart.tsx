@@ -1,14 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { CompactPicker } from 'react-color';
 import { editChart, useAppDispatch } from '../../redux';
 import { selectModalData, chartsData } from '../../data';
 import './Modal.css';
-import { AppContext } from '../../context';
-import { ModalProps } from '../../models';
 
-export const ModalEditChart: React.FC<ModalProps> = ({ chart }) => {
+type Props = {
+  chart: {
+    id: string;
+    name: string;
+    type: string;
+    data: number[][];
+    color: string;
+  };
+  isModalEdit: boolean;
+  setModalEdit: (value: boolean) => void;
+};
+
+export const ModalEditChart: React.FC<Props> = ({
+  chart,
+  isModalEdit,
+  setModalEdit,
+}: Props) => {
   const dispatch = useAppDispatch();
-  const { isOpenPopUp, setOpenPopUp } = useContext(AppContext);
 
   const [newChartName, setNewChartName] = useState<string>('');
   const [newChartType, setNewChartType] = useState<string>('');
@@ -25,7 +38,7 @@ export const ModalEditChart: React.FC<ModalProps> = ({ chart }) => {
         color: newChartColor,
       })
     );
-    setOpenPopUp(false);
+    setModalEdit(false);
   };
 
   const handleChangeNewChartType = (event: {
@@ -40,26 +53,26 @@ export const ModalEditChart: React.FC<ModalProps> = ({ chart }) => {
     setNewChartDataName(event.target.value);
   };
 
-  const handleClickOpenModal = () => {
-    setOpenPopUp(false);
+  const handleClickCloseModal = () => {
+    setModalEdit(false);
   };
 
   const handleKeyDown = (e: { key: string }) => {
     if (e.key === 'Enter' || e.key === 'Space') {
-      setOpenPopUp(false);
+      setModalEdit(false);
     }
   };
 
   return (
     <div
-      className={isOpenPopUp ? 'modal active' : 'modal'}
+      className={isModalEdit ? 'modal active' : 'modal'}
       role="button"
       tabIndex={0}
-      onClick={handleClickOpenModal}
+      onClick={handleClickCloseModal}
       onKeyDown={handleKeyDown}
     >
       <div
-        className={isOpenPopUp ? 'modal-content active' : 'modal-content'}
+        className={isModalEdit ? 'modal-content active' : 'modal-content'}
         role="button"
         tabIndex={-1}
         onKeyDown={handleKeyDown}
@@ -72,7 +85,7 @@ export const ModalEditChart: React.FC<ModalProps> = ({ chart }) => {
           className="btn btn-close float-end mb-4"
           aria-label="Close"
           onClick={() => {
-            setOpenPopUp(false);
+            setModalEdit(false);
           }}
         />
         <h3 className=".mb-0">Edit</h3>
