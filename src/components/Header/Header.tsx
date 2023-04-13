@@ -3,11 +3,11 @@ import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../../index.css';
 
-interface HeaderProps {
+interface IHeader {
   showSidebar: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ showSidebar }: HeaderProps) => (
+export const Header: React.FC<IHeader> = ({ showSidebar }) => (
   <header className="header d-flex justify-content-space-between align-items-center mb-4">
     <div className="flex-fill ">
       <FaBars className="ms-5  header-icon" onClick={showSidebar} size={30} />

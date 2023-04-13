@@ -2,9 +2,9 @@ import { AiOutlineAreaChart } from 'react-icons/ai';
 import { MdAddchart } from 'react-icons/md';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiInfoSquare } from 'react-icons/bi';
-import { type ISidebar } from '../models/models';
+import { INavbar } from '../models';
 
-export const NavbarData: ISidebar[] = [
+export const NavbarData: INavbar[] = [
   {
     title: 'Hide',
     path: '',

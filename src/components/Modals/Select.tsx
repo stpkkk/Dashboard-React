@@ -1,15 +1,7 @@
 import React from 'react';
-import { Option } from '../../models';
+import { ISelect } from '../../models';
 
-type SelectProps = {
-  selectValue: any;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  selectLabelName: string;
-  selectName: string;
-  options: Option[];
-};
-
-export const Select: React.FC<SelectProps> = ({
+export const Select: React.FC<ISelect> = ({
   selectValue,
   onChange,
   selectLabelName,

@@ -1,8 +1,8 @@
-import { type ISelectModal } from '../models/models';
+import { IOption } from '../models';
 
 interface selectModalDataType {
-  typeOptions: ISelectModal[];
-  dataNameOptions: ISelectModal[];
+  typeOptions: IOption[];
+  dataNameOptions: IOption[];
 }
 
 export const selectModalData: selectModalDataType = {

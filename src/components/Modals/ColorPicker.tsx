@@ -1,16 +1,12 @@
 import React from 'react';
-import { CompactPicker } from 'react-color';
+import { ColorResult, CompactPicker } from 'react-color';
+import { IColorPicker } from '../../models';
 
-type ColorPickerProps = {
-  chartColor: string;
-  setChartColor: (value: string) => void;
-};
-
-export const ColorPicker: React.FC<ColorPickerProps> = ({
+export const ColorPicker: React.FC<IColorPicker> = ({
   setChartColor,
   chartColor,
 }) => {
-  const handleColorChange = (color: any) => {
+  const handleColorChange = (color: ColorResult) => {
     setChartColor(color.hex);
   };
   return (
@@ -26,5 +22,3 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
     </div>
   );
 };
-
-export default ColorPicker;

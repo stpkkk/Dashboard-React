@@ -5,23 +5,11 @@ import { AppContext } from '../../context';
 import { chartsData, selectModalData } from '../../data';
 import './Modal.css';
 import { Select } from './Select';
-import { Option } from '../../models';
+import { IOption, IModal } from '../../models';
 import { ColorPicker } from './ColorPicker';
 import { InputText } from './InputText';
 
-interface ModalProps {
-  chart: {
-    id: string;
-    name: string;
-    type: string;
-    data: number[][];
-    color: string;
-  };
-  setModalEdit: (name: boolean) => void;
-  isModalEdit: boolean;
-}
-
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<IModal> = ({
   chart,
   setModalEdit,
   isModalEdit,
@@ -86,15 +74,15 @@ export const Modal: React.FC<ModalProps> = ({
     setChartDataName(event.target.value);
   };
 
-  const selectOptionsType: Option[] = selectModalData.typeOptions.map(
-    (option: { id: number; value: string; label: string }) => ({
+  const selectOptionsType: IOption[] = selectModalData.typeOptions.map(
+    (option) => ({
       id: option.id,
       value: option.value,
       label: option.label,
     })
   );
 
-  const selectOptionsName: Option[] = Object.keys(chartsData).map((date) => ({
+  const selectOptionsName: IOption[] = Object.keys(chartsData).map((date) => ({
     id: Number(date),
     value: date,
     label: date,
@@ -142,7 +130,7 @@ export const Modal: React.FC<ModalProps> = ({
               selectName="chart-data"
               selectLabelName="Chart data:"
               onChange={handleChangeChartData}
-              selectValue={chartsData[0]}
+              selectValue={chartsData[0] ? chartsData[0].toString() : ''}
               options={selectOptionsName}
             />
             <ColorPicker

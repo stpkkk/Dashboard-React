@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { deleteChart } from '../../redux';
-import { ModalProps } from '../../models';
+import { IChartObj } from '../../models';
 import { Modal } from '../modals';
 
-export const ChartItem: React.FC<ModalProps> = ({ chart }: ModalProps) => {
+export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();
   const [isModalEdit, setModalEdit] = useState<boolean>(false);
 

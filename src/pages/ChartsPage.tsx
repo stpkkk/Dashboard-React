@@ -28,7 +28,7 @@ export const ChartsPage: React.FC = () => {
       },
       type: 'datetime',
       labels: {
-        formatter(obj: any) {
+        formatter(obj: { value: number }) {
           return Highcharts.dateFormat('%d %b %Y', obj.value);
         },
       },
@@ -64,7 +64,7 @@ export const ChartsPage: React.FC = () => {
       ) : (
         <>
           <div className="d-flex align-items-center justify-content-center fw-bold">
-            There is no charts! Add some charts in
+            There are no charts! Add some charts in
             <NavLink className="text-decoration-none" to="/settings">
               Settings!
             </NavLink>

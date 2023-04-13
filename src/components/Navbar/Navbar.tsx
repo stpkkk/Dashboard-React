@@ -1,18 +1,11 @@
-import React, { UIEventHandler, KeyboardEventHandler } from 'react';
+import React, { KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { NavbarData } from '../../data';
 import './Navbar.css';
+import { ISidebar } from '../../models';
 
-interface SidebarProps {
-  isSidebar: boolean;
-  showSidebar: UIEventHandler;
-}
-
-export const Navbar: React.FC<SidebarProps> = ({
-  isSidebar,
-  showSidebar,
-}: SidebarProps) => {
-  const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
+export const Navbar: React.FC<ISidebar> = ({ isSidebar, showSidebar }) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       showSidebar(event);
     }
