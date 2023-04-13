@@ -5,10 +5,11 @@ type InputTextType = {
 };
 
 export const InputText: React.FC<InputTextType> = ({ setChartName }) => (
-  <div className="mb-3 chart-name ">
+  <div className="mb-3 chart-name form-group">
     <label
       htmlFor="chart-name"
-      className="form-label  mr-auto  w-100"
+      className="form-label mr-auto w-100
+			"
       aria-label="chart-name"
     >
       Chart name:

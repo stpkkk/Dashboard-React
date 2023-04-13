@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { deleteChart } from '../../redux';
 import { ModalProps } from '../../models';
@@ -27,18 +28,16 @@ export const ChartItem: React.FC<ModalProps> = ({ chart }: ModalProps) => {
         </p> */}
       </div>
 
-      <button
-        type="button"
+      <Button
         className="btn btn-light me-2 btn-block"
         onClick={() => {
           setModalEdit(true);
         }}
       >
         Edit
-      </button>
+      </Button>
 
-      <button
-        type="button"
+      <Button
         className="btn btn-danger"
         onClick={() => {
           dispatch(
@@ -53,7 +52,7 @@ export const ChartItem: React.FC<ModalProps> = ({ chart }: ModalProps) => {
         }}
       >
         Delete
-      </button>
+      </Button>
 
       {isModalEdit && (
         <Modal

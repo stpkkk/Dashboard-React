@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { ChartList, Modal } from '../components';
 import { AppContext } from '../context';
 
@@ -11,15 +12,13 @@ export const SettingsPage: React.FC = () => {
       <h3 className="m-2">Chart list:</h3>
       <div>
         <ChartList />
-        <button
-          type="button"
-          className="btn btn-primary"
+        <Button
           onClick={() => {
             setModal(true);
           }}
         >
           Add chart
-        </button>
+        </Button>
       </div>
       {isModal && (
         <Modal

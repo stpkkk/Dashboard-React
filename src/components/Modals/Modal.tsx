@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Button } from 'react-bootstrap';
 import { addChart, editChart, useAppDispatch } from '../../redux';
 import { AppContext } from '../../context';
 import { chartsData, selectModalData } from '../../data';
@@ -26,8 +27,7 @@ export const Modal: React.FC<ModalProps> = ({
   isModalEdit,
 }) => {
   const dispatch = useAppDispatch();
-  const { isModal, setModal, handleKeyDown, handleClickCloseModal } =
-    useContext(AppContext);
+  const { isModal, setModal } = useContext(AppContext);
 
   const [chartName, setChartName] = useState<string>(chart.name);
   const [chartType, setChartType] = useState<string>(chart.type);
@@ -60,6 +60,18 @@ export const Modal: React.FC<ModalProps> = ({
       })
     );
     setModalEdit(false);
+  };
+
+  const handleClickCloseModal = () => {
+    setModal(false);
+    setModalEdit(false);
+  };
+
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      setModal(false);
+      setModalEdit(false);
+    }
   };
 
   const handleChangeChartType = (
@@ -107,16 +119,14 @@ export const Modal: React.FC<ModalProps> = ({
           e.stopPropagation();
         }}
       >
-        <button
-          className="btn btn-close float-end mb-4"
-          type="button"
-          aria-label="Close"
+        <Button
+          className="btn btn-danger btn-close mb-4 p-2"
           onClick={() => {
             setModal(false);
             setModalEdit(false);
           }}
         />
-        <h3>Add</h3>
+        <h3>{isModalEdit ? 'Edit' : 'Add'}</h3>
 
         <form>
           <fieldset>
@@ -140,21 +150,9 @@ export const Modal: React.FC<ModalProps> = ({
               setChartColor={setChartColor}
             />
             {isModalEdit ? (
-              <button
-                type="button"
-                className="btn btn-primary "
-                onClick={handleChangeEdit}
-              >
-                Edit
-              </button>
+              <Button onClick={handleChangeEdit}>Edit</Button>
             ) : (
-              <button
-                type="button"
-                className="btn btn-primary "
-                onClick={handleChangeAdd}
-              >
-                Submit
-              </button>
+              <Button onClick={handleChangeAdd}>Submit</Button>
             )}
           </fieldset>
         </form>

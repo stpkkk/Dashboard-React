@@ -12,22 +12,10 @@ export const App: React.FC = () => {
     setSidebar(!isSidebar);
   };
 
-  const handleClickCloseModal = () => {
-    setModal(false);
-  };
-
-  const handleKeyDown = (e: { key: string }) => {
-    if (e.key === 'Enter' || e.key === 'Space') {
-      setModal(false);
-    }
-  };
-
   const contextValue = useMemo(
     () => ({
       isModal,
       setModal,
-      handleClickCloseModal,
-      handleKeyDown,
     }),
     [isModal, setModal]
   );
