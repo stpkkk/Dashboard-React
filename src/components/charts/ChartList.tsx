@@ -7,7 +7,7 @@ export const ChartList: React.FC = () => {
   const chartListRedux = useSelector(selectCharts);
 
   return (
-    <ul className="chart-list p-0">
+    <ul className="chart-list">
       {chartListRedux.map(
         (chart: {
           id: string;

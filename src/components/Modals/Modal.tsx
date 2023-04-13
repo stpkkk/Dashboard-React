@@ -17,10 +17,10 @@ export const Modal: React.FC<IModal> = ({
   const dispatch = useAppDispatch();
   const { isModal, setModal } = useContext(AppContext);
 
-  const [chartName, setChartName] = useState<string>(chart.name);
-  const [chartType, setChartType] = useState<string>(chart.type);
-  const [chartColor, setChartColor] = useState<string>(chart.color);
-  const [chartDataName, setChartDataName] = useState<string>(
+  const [chartName, setChartName] = useState(chart.name);
+  const [chartType, setChartType] = useState(chart.type);
+  const [chartColor, setChartColor] = useState(chart.color);
+  const [chartDataName, setChartDataName] = useState(
     Object.keys(chartsData)[0]
   );
 
@@ -74,7 +74,7 @@ export const Modal: React.FC<IModal> = ({
     setChartDataName(event.target.value);
   };
 
-  const selectOptionsType: IOption[] = selectModalData.typeOptions.map(
+  const optionsChartType: IOption[] = selectModalData.typeOptions.map(
     (option) => ({
       id: option.id,
       value: option.value,
@@ -82,11 +82,13 @@ export const Modal: React.FC<IModal> = ({
     })
   );
 
-  const selectOptionsName: IOption[] = Object.keys(chartsData).map((date) => ({
-    id: Number(date),
-    value: date,
-    label: date,
-  }));
+  const optionsChartDataName: IOption[] = Object.keys(chartsData).map(
+    (date) => ({
+      id: Number(date),
+      value: date,
+      label: date,
+    })
+  );
 
   return (
     <div
@@ -124,14 +126,14 @@ export const Modal: React.FC<IModal> = ({
               selectLabelName="Chart type:"
               onChange={handleChangeChartType}
               selectValue={chartType}
-              options={selectOptionsType}
+              options={optionsChartType}
             />
             <Select
               selectName="chart-data"
               selectLabelName="Chart data:"
               onChange={handleChangeChartData}
               selectValue={chartsData[0] ? chartsData[0].toString() : ''}
-              options={selectOptionsName}
+              options={optionsChartDataName}
             />
             <ColorPicker
               chartColor={chartColor}

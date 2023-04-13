@@ -5,10 +5,13 @@
 }
 
 body {
-  margin: 0px;
   background-color: #212529;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  padding: 0;
 }
 
 .wrapper {

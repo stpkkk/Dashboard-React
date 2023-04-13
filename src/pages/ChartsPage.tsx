@@ -22,6 +22,10 @@ export const ChartsPage: React.FC = () => {
       enabled: false,
     },
 
+    accessibility: {
+      enabled: false,
+    },
+
     xAxis: {
       title: {
         text: 'Date',

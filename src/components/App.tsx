@@ -5,8 +5,8 @@ import { Header, Navbar } from './index';
 import { AppContext } from '../context';
 
 export const App: React.FC = () => {
-  const [isSidebar, setSidebar] = useState<boolean>(false);
-  const [isModal, setModal] = useState<boolean>(false);
+  const [isSidebar, setSidebar] = useState(false);
+  const [isModal, setModal] = useState(false);
 
   const showSidebar = () => {
     setSidebar(!isSidebar);

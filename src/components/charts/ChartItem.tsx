@@ -7,7 +7,23 @@ import { Modal } from '../modals';
 
 export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();
-  const [isModalEdit, setModalEdit] = useState<boolean>(false);
+  const [isModalEdit, setModalEdit] = useState(false);
+  const listItems = [
+    {
+      title: 'name',
+      value: chart.name ? `name: ${chart.name}` : 'name: default',
+    },
+    {
+      title: 'type',
+      value: chart.type ? `type: ${chart.type}` : 'type: default',
+    },
+  ];
+
+  const renderedListItems = listItems.map((item) => (
+    <li className="d-block fw-bold mb-0 " key={item.title}>
+      {item.value}
+    </li>
+  ));
 
   return (
     <li
@@ -16,43 +32,35 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
         color: chart.color,
       }}
     >
-      <div className="d-flex flex-fill align-items-center gap-4">
-        <p className="mw-100px d-block fw-bold mb-0">
-          {chart.name ? `name: ${chart.name}` : 'name: no name'}
-        </p>
-        <p className=" d-block fw-bold mb-0">
-          {chart.type ? `type: ${chart.type}` : 'type: default'}
-        </p>
-        {/* <p className=" d-block fw-bold mb-0">
-          {chart.data ? `data: ${chart.data}` : 'data: default'}
-        </p> */}
+      <ul className="d-flex align-items-center gap-4">{renderedListItems}</ul>
+
+      <div className="ml-auto">
+        <Button
+          className="btn btn-light me-2 btn-block"
+          onClick={() => {
+            setModalEdit(true);
+          }}
+        >
+          Edit
+        </Button>
+
+        <Button
+          className="btn btn-danger"
+          onClick={() => {
+            dispatch(
+              deleteChart({
+                id: chart.id,
+                name: '',
+                type: '',
+                data: [],
+                color: '',
+              })
+            );
+          }}
+        >
+          Delete
+        </Button>
       </div>
-
-      <Button
-        className="btn btn-light me-2 btn-block"
-        onClick={() => {
-          setModalEdit(true);
-        }}
-      >
-        Edit
-      </Button>
-
-      <Button
-        className="btn btn-danger"
-        onClick={() => {
-          dispatch(
-            deleteChart({
-              id: chart.id,
-              name: '',
-              type: '',
-              data: [],
-              color: '',
-            })
-          );
-        }}
-      >
-        Delete
-      </Button>
 
       {isModalEdit && (
         <Modal
