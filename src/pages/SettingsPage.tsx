@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { ChartList, ModalAddChart } from '../components';
+import React, { useContext, useState } from 'react';
+import { ChartList, Modal } from '../components';
 import { AppContext } from '../context';
 
 export const SettingsPage: React.FC = () => {
   const { isModal, setModal } = useContext(AppContext);
-
+  const [isModalEdit, setModalEdit] = useState(false);
   return (
     <div className="settings">
       <h2 className="text-center mb-4">Settings</h2>
@@ -21,7 +21,19 @@ export const SettingsPage: React.FC = () => {
           Add chart
         </button>
       </div>
-      {isModal && <ModalAddChart />}
+      {isModal && (
+        <Modal
+          chart={{
+            id: '',
+            name: '',
+            type: '',
+            data: [],
+            color: '',
+          }}
+          setModalEdit={setModalEdit}
+          isModalEdit={isModalEdit}
+        />
+      )}
     </div>
   );
 };

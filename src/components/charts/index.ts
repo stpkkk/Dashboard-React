@@ -1,2 +1,2 @@
-export { Chart } from './Chart';
+export { ChartItem } from './ChartItem';
 export { ChartList } from './ChartList';

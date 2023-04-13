@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCharts } from '../../redux';
-import { Chart } from './Chart';
+import { ChartItem } from './ChartItem';
 
 export const ChartList: React.FC = () => {
   const chartListRedux = useSelector(selectCharts);
@@ -16,7 +16,7 @@ export const ChartList: React.FC = () => {
           data: number[][];
           color: string;
         }) => (
-          <Chart key={chart.id} chart={chart} />
+          <ChartItem key={chart.id} chart={chart} />
         )
       )}
     </ul>

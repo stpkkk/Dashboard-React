@@ -29,3 +29,10 @@ export interface ModalProps {
     color: string;
   };
 }
+
+export interface Option {
+  id: number;
+  value: string;
+  label: string;
+  date?: string;
+}
