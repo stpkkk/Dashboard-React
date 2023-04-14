@@ -8,60 +8,48 @@ import { Modal } from '../modals';
 export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();
   const [isModalEdit, setModalEdit] = useState(false);
-  const listItems = [
-    {
-      title: 'name',
-      value: chart.name ? `name: ${chart.name}` : 'name: default',
-    },
-    {
-      title: 'type',
-      value: chart.type ? `type: ${chart.type}` : 'type: default',
-    },
-  ];
 
-  const renderedListItems = listItems.map((item) => (
-    <li className="d-block fw-bold mb-0 " key={item.title}>
-      {item.value}
-    </li>
-  ));
+  const handleEdit = () => {
+    setModalEdit(true);
+  };
+
+  const handleDelete = () => {
+    dispatch(
+      deleteChart({
+        id: chart.id,
+        name: '',
+        type: '',
+        data: [],
+        color: '',
+      })
+    );
+  };
 
   return (
     <li
-      className="d-flex align-items-center border border-light rounded p-2 justify-content-between mb-2"
+      className=""
       style={{
         color: chart.color,
       }}
     >
-      <ul className="d-flex align-items-center gap-4">{renderedListItems}</ul>
-
-      <div className="ml-auto">
-        <Button
-          className="btn btn-light me-2 btn-block"
-          onClick={() => {
-            setModalEdit(true);
-          }}
-        >
-          Edit
-        </Button>
-
-        <Button
-          className="btn btn-danger"
-          onClick={() => {
-            dispatch(
-              deleteChart({
-                id: chart.id,
-                name: '',
-                type: '',
-                data: [],
-                color: '',
-              })
-            );
-          }}
-        >
-          Delete
-        </Button>
-      </div>
-
+      <ul className="row border border-light rounded p-2 g-2 g-md-0  d-flex align-items-center ">
+        <li className="col-lg-4 col-md-3 col-sm-3 fw-bold text-align text-wrap w-100px">
+          {chart.name ? `name: ${chart.name}` : 'name: no name'}
+        </li>
+        <li className="col-lg-4 col-md-3 col-sm-3 fw-bold text-wrap">
+          {chart.type ? `type: ${chart.type}` : 'type: default'}
+        </li>
+        <li className="col-lg-1 col-md-2 col-sm-2 t me-2 btn-block ms-auto p-0">
+          <Button className="btn btn-light w-100" onClick={handleEdit}>
+            Edit
+          </Button>
+        </li>
+        <li className="col-lg-1 col-md-2 col-sm-2 p-0">
+          <Button className="btn btn-danger w-100" onClick={handleDelete}>
+            Delete
+          </Button>
+        </li>
+      </ul>
       {isModalEdit && (
         <Modal
           chart={chart}

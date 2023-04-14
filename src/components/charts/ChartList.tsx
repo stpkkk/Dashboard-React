@@ -7,7 +7,7 @@ export const ChartList: React.FC = () => {
   const chartListRedux = useSelector(selectCharts);
 
   return (
-    <ul className="chart-list">
+    <ul className=" d-flex flex-column gap-3">
       {chartListRedux.map(
         (chart: {
           id: string;

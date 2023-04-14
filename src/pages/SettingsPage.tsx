@@ -7,7 +7,7 @@ export const SettingsPage: React.FC = () => {
   const { isModal, setModal } = useContext(AppContext);
   const [isModalEdit, setModalEdit] = useState(false);
   return (
-    <div className="settings">
+    <div className="container">
       <h2 className="text-center mb-4">Settings</h2>
       <h3 className="m-2">Chart list:</h3>
       <div>

@@ -34,3 +34,8 @@
 .modal-select .modal-select-option {
   color: darkslategrey;
 }
+
+.invalid {
+  border: tomato solid 2px;
+  background-color: red;
+}

@@ -3,11 +3,11 @@ import { Button } from 'react-bootstrap';
 import { addChart, editChart, useAppDispatch } from '../../redux';
 import { AppContext } from '../../context';
 import { chartsData, selectModalData } from '../../data';
-import './Modal.css';
 import { Select } from './Select';
 import { IOption, IModal } from '../../models';
 import { ColorPicker } from './ColorPicker';
 import { InputText } from './InputText';
+import './Modal.css';
 
 export const Modal: React.FC<IModal> = ({
   chart,
@@ -48,6 +48,14 @@ export const Modal: React.FC<IModal> = ({
       })
     );
     setModalEdit(false);
+  };
+
+  const handleFormSubmit = () => {
+    if (isModalEdit) {
+      handleChangeEdit();
+    } else {
+      handleChangeAdd();
+    }
   };
 
   const handleClickCloseModal = () => {
@@ -118,33 +126,26 @@ export const Modal: React.FC<IModal> = ({
         />
         <h3>{isModalEdit ? 'Edit' : 'Add'}</h3>
 
-        <form>
-          <fieldset>
-            <InputText setChartName={setChartName} />
-            <Select
-              selectName="chart-type"
-              selectLabelName="Chart type:"
-              onChange={handleChangeChartType}
-              selectValue={chartType}
-              options={optionsChartType}
-            />
-            <Select
-              selectName="chart-data"
-              selectLabelName="Chart data:"
-              onChange={handleChangeChartData}
-              selectValue={chartsData[0] ? chartsData[0].toString() : ''}
-              options={optionsChartDataName}
-            />
-            <ColorPicker
-              chartColor={chartColor}
-              setChartColor={setChartColor}
-            />
-            {isModalEdit ? (
-              <Button onClick={handleChangeEdit}>Edit</Button>
-            ) : (
-              <Button onClick={handleChangeAdd}>Submit</Button>
-            )}
-          </fieldset>
+        <form onSubmit={handleFormSubmit}>
+          <InputText setChartName={setChartName} chartName={chartName} />
+          <Select
+            selectName="chart-type"
+            selectLabelName="Chart type:"
+            onChange={handleChangeChartType}
+            selectValue={chartType}
+            options={optionsChartType}
+          />
+          <Select
+            selectName="chart-data"
+            selectLabelName="Chart data:"
+            onChange={handleChangeChartData}
+            selectValue={chartsData[0] ? chartsData[0].toString() : ''}
+            options={optionsChartDataName}
+          />
+          <ColorPicker chartColor={chartColor} setChartColor={setChartColor} />
+          <Button type="submit" onClick={handleFormSubmit}>
+            {isModalEdit ? 'Edit' : 'Submit'}
+          </Button>
         </form>
       </div>
     </div>

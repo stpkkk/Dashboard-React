@@ -15,18 +15,18 @@ export const Select: React.FC<ISelect> = ({
       aria-label={selectName}
     >
       {selectLabelName}
-      <select
-        id={selectName}
-        className="form-select"
-        onChange={onChange}
-        value={selectValue}
-      >
-        {options.map((option) => (
-          <option key={`${option.value}_${option.label}`} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
     </label>
+    <select
+      id={selectName}
+      className="form-select"
+      onChange={onChange}
+      value={selectValue}
+    >
+      {options.map((option) => (
+        <option key={`${option.value}_${option.label}`} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
   </div>
 );

@@ -52,7 +52,7 @@ export const ChartsPage: React.FC = () => {
   };
 
   return (
-    <div className="home">
+    <div className="container">
       <h2 className="text-center mb-4">Charts</h2>
       {chartListRedux.length > 0 ? (
         <div className="max-width:1200px">
@@ -70,7 +70,7 @@ export const ChartsPage: React.FC = () => {
           <div className="d-flex align-items-center justify-content-center fw-bold">
             There are no charts! Add some charts in
             <NavLink className="text-decoration-none" to="/settings">
-              Settings!
+              &nbsp;Settings!
             </NavLink>
           </div>
           <div className="d-flex align-items-center justify-content-center mt-3">

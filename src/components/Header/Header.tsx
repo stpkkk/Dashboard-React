@@ -8,13 +8,13 @@ interface IHeader {
 }
 
 export const Header: React.FC<IHeader> = ({ showSidebar }) => (
-  <header className="header d-flex justify-content-space-between align-items-center mb-4">
+  <header className="header d-flex align-items-center p-4 mb-5">
     <div className="flex-fill ">
-      <FaBars className="ms-5  header-icon" onClick={showSidebar} size={30} />
+      <FaBars className=" header-icon" onClick={showSidebar} size={30} />
     </div>
     <div className="appTitle flex-shrink-1 text-center">
       <Link to="/">
-        <h1 className="m-0 me-5 h-80px">Dashboard</h1>
+        <h1>Dashboard</h1>
       </Link>
     </div>
   </header>
