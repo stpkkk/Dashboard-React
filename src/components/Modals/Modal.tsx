@@ -52,7 +52,8 @@ export const Modal: React.FC<IModal> = ({
     setModalEdit(false);
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (isModalEdit) {
       handleChangeEdit();
     } else {
@@ -128,7 +129,7 @@ export const Modal: React.FC<IModal> = ({
         />
         <h3>{isModalEdit ? 'Edit' : 'Add'}</h3>
 
-        <form onSubmit={handleFormSubmit} action="#">
+        <form onSubmit={handleFormSubmit}>
           <InputText setChartName={setChartName} chartName={chartName} />
           <Select
             selectName="chart-type"
