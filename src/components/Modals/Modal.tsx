@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { addChart, editChart, useAppDispatch } from '../../redux';
 import { AppContext } from '../../context';
-import { chartsData, selectModalData } from '../../data';
+import { selectModalData } from '../../data';
 import { ColorPicker } from './ColorPicker';
 import { Select } from './Select';
 import { InputText } from './InputText';
@@ -15,7 +15,7 @@ export const Modal: React.FC<IModal> = ({
   isModalEdit,
 }) => {
   const dispatch = useAppDispatch();
-  const { isModal, setModal } = useContext(AppContext);
+  const { isModal, setModal, chartsData } = useContext(AppContext);
 
   const [chartName, setChartName] = useState(chart.name);
   const [chartType, setChartType] = useState(chart.type);
@@ -23,6 +23,8 @@ export const Modal: React.FC<IModal> = ({
   const [chartDataName, setChartDataName] = useState(
     Object.keys(chartsData)[0]
   );
+
+  // console.log(chartsData);
 
   const handleChangeAdd = () => {
     dispatch(
@@ -91,8 +93,8 @@ export const Modal: React.FC<IModal> = ({
   );
 
   const optionsChartDataName: IOption[] = Object.keys(chartsData).map(
-    (date) => ({
-      id: Number(date),
+    (date, index) => ({
+      id: index,
       value: date,
       label: date,
     })
@@ -126,7 +128,7 @@ export const Modal: React.FC<IModal> = ({
         />
         <h3>{isModalEdit ? 'Edit' : 'Add'}</h3>
 
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} action="#">
           <InputText setChartName={setChartName} chartName={chartName} />
           <Select
             selectName="chart-type"
@@ -139,7 +141,7 @@ export const Modal: React.FC<IModal> = ({
             selectName="chart-data"
             selectLabelName="Chart data:"
             onChange={handleChangeChartData}
-            selectValue={chartsData[0]}
+            selectValue={chartDataName}
             options={optionsChartDataName}
           />
           <ColorPicker chartColor={chartColor} setChartColor={setChartColor} />

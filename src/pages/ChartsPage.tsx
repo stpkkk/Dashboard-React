@@ -31,10 +31,10 @@ export const ChartsPage: React.FC = () => {
         text: 'Date',
       },
       type: 'datetime',
-      labels: {
-        formatter(obj: { value: number }) {
-          return Highcharts.dateFormat('%d %b %Y', obj.value);
-        },
+      dateTimeLabelFormats: {
+        day: '%e %b %Y',
+        month: '%b %Y',
+        year: '%Y',
       },
     },
     yAxis: {
