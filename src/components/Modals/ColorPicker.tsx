@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorResult, CompactPicker } from 'react-color';
+import { ColorResult, ChromePicker } from 'react-color';
 import { IColorPicker } from '../../models';
 
 export const ColorPicker: React.FC<IColorPicker> = ({
@@ -10,14 +10,14 @@ export const ColorPicker: React.FC<IColorPicker> = ({
     setChartColor(color.hex);
   };
   return (
-    <div className="mb-3 chart-color">
-      <span className="form-label" aria-label="chart-color">
+    <div className="mb-3">
+      <label htmlFor="chart-color" className="mb-2">
         Chart color:
-      </span>
-      <CompactPicker
-        className="w-100"
+      </label>
+      <ChromePicker
         color={chartColor}
         onChangeComplete={handleColorChange}
+        disableAlpha
       />
     </div>
   );

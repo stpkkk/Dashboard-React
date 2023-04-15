@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { deleteChart } from '../../redux';
-import { IChartObj } from '../../models';
 import { Modal } from '../modals';
+import { IChartObj } from '../../models';
 
 export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();

@@ -8,12 +8,8 @@ export const Select: React.FC<ISelect> = ({
   selectName,
   options,
 }) => (
-  <div className={`mb-3 ${selectName}`}>
-    <label
-      htmlFor={selectName}
-      className="form-label mr-auto w-100"
-      aria-label={selectName}
-    >
+  <div className="mb-3">
+    <label htmlFor={selectName} className="form-label" aria-label={selectName}>
       {selectLabelName}
     </label>
     <select

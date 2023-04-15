@@ -55,7 +55,7 @@ export const ChartsPage: React.FC = () => {
     <div className="container">
       <h2 className="text-center mb-4">Charts</h2>
       {chartListRedux.length > 0 ? (
-        <div className="max-width:1200px">
+        <>
           <HighchartsReact
             highcharts={Highcharts}
             options={options}
@@ -64,7 +64,7 @@ export const ChartsPage: React.FC = () => {
           <div className="mt-4">
             <ChartList />
           </div>
-        </div>
+        </>
       ) : (
         <>
           <div className="d-flex align-items-center justify-content-center fw-bold">

@@ -3,10 +3,10 @@ import { Button } from 'react-bootstrap';
 import { addChart, editChart, useAppDispatch } from '../../redux';
 import { AppContext } from '../../context';
 import { chartsData, selectModalData } from '../../data';
-import { Select } from './Select';
-import { IOption, IModal } from '../../models';
 import { ColorPicker } from './ColorPicker';
+import { Select } from './Select';
 import { InputText } from './InputText';
+import { IOption, IModal } from '../../models';
 import './Modal.css';
 
 export const Modal: React.FC<IModal> = ({
@@ -118,7 +118,7 @@ export const Modal: React.FC<IModal> = ({
         }}
       >
         <Button
-          className="btn btn-danger btn-close mb-4 p-2"
+          className="btn btn-close btn-danger mb-2 p-2 ms-auto"
           onClick={() => {
             setModal(false);
             setModalEdit(false);
@@ -139,13 +139,11 @@ export const Modal: React.FC<IModal> = ({
             selectName="chart-data"
             selectLabelName="Chart data:"
             onChange={handleChangeChartData}
-            selectValue={chartsData[0] ? chartsData[0].toString() : ''}
+            selectValue={chartsData[0]}
             options={optionsChartDataName}
           />
           <ColorPicker chartColor={chartColor} setChartColor={setChartColor} />
-          <Button type="submit" onClick={handleFormSubmit}>
-            {isModalEdit ? 'Edit' : 'Submit'}
-          </Button>
+          <Button type="submit">{isModalEdit ? 'Edit' : 'Submit'}</Button>
         </form>
       </div>
     </div>

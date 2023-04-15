@@ -1,8 +1,8 @@
 import React, { KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { NavbarData } from '../../data';
-import './Navbar.css';
 import { ISidebar } from '../../models';
+import './Navbar.css';
 
 export const Navbar: React.FC<ISidebar> = ({ isSidebar, showSidebar }) => {
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {

@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 import { IOption } from './option';
 
 export interface ISelect {
-  selectValue: string | number | readonly string[] | undefined;
+  selectValue: any;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   selectLabelName: string;
   selectName: string;

@@ -9,8 +9,8 @@ export const InputText: React.FC<InputTextType> = ({
   setChartName,
   chartName,
 }) => (
-  <div className="mb-3  has-validation">
-    <label htmlFor="chart-name" className="form-label mr-auto w-100">
+  <div className="mb-3">
+    <label htmlFor="chart-name" className="form-label">
       Chart name:
     </label>
     <input
@@ -22,8 +22,8 @@ export const InputText: React.FC<InputTextType> = ({
       onChange={(event) => {
         setChartName(event.target.value);
       }}
-      required
       aria-describedby="inputGroupPrepend"
+      required
     />
   </div>
 );
