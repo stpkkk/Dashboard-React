@@ -1,10 +1,9 @@
 import React from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HiOutlineEmojiSad } from 'react-icons/hi';
 import { useAppSelector, selectCharts } from '../redux';
-import { ChartList } from '../components';
 
 export const ViewMode: React.FC = () => {
   const chartListRedux = useAppSelector(selectCharts);
@@ -63,17 +62,17 @@ export const ViewMode: React.FC = () => {
             options={options}
             constructorType="stockChart"
           />
-          <div className="mt-4">
-            <ChartList />
-          </div>
+          <Link className="btn btn-primary mt-2" to="/settings">
+            Settings
+          </Link>
         </>
       ) : (
         <>
           <div className="d-flex align-items-center justify-content-center fw-bold">
             There are no charts! Add some charts in
-            <NavLink className="text-decoration-none" to="/settings">
+            <Link className="text-decoration-none" to="/settings">
               &nbsp;Settings!
-            </NavLink>
+            </Link>
           </div>
           <div className="d-flex align-items-center justify-content-center mt-3">
             <HiOutlineEmojiSad size={70} />
