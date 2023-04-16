@@ -22,8 +22,9 @@ li {
   box-sizing: border-box;
 }
 
-.wrapper {
+.container {
   max-width: 1200px;
   margin: 0 auto;
   color: #faebd7;
+  padding: 0 10px;
 }

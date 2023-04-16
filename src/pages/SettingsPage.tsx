@@ -10,21 +10,19 @@ export const SettingsPage: React.FC = () => {
   return (
     <div className="container">
       <h2 className="text-center mb-4">Settings</h2>
-      <div>
-        <ChartList />
-        <div className="d-flex gap-2">
-          <Button
-            className="btn-success"
-            onClick={() => {
-              setModal(true);
-            }}
-          >
-            Add chart
-          </Button>
-          <Link className="btn btn-primary" to="/">
-            View Mode
-          </Link>
-        </div>
+      <ChartList />
+      <div className="d-flex gap-2">
+        <Button
+          className="btn-success"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
+          Add chart
+        </Button>
+        <Link className="btn btn-primary" to="/">
+          View Mode
+        </Link>
       </div>
       {isModal && (
         <Modal

@@ -1,17 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import { ViewMode, AboutPage, SettingsPage } from '../pages';
 import { Header, Navbar } from './index';
 import { AppContext } from '../context';
-
-type ChartsDataType = any;
+import { Router } from './Router';
 
 export const App: React.FC = () => {
   const [isSidebar, setSidebar] = useState(false);
   const [isModal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [chartsData, setChartsData] = useState<ChartsDataType>({});
+  const [chartsData, setChartsData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,14 +47,8 @@ export const App: React.FC = () => {
   return (
     <AppContext.Provider value={contextValue}>
       <Header showSidebar={showSidebar} />
-      <div className="wrapper">
-        <Navbar isSidebar={isSidebar} showSidebar={showSidebar} />
-        <Routes>
-          <Route path="/" element={<ViewMode />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </div>
+      <Navbar isSidebar={isSidebar} showSidebar={showSidebar} />
+      <Router />
     </AppContext.Provider>
   );
 };

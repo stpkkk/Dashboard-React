@@ -37,7 +37,7 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
           {chart.name ? `name: ${chart.name}` : 'name: no name'}
         </li>
         <li className="col-lg-4 col-md-3 col-sm-3 fw-bold text-wrap">
-          {chart.type ? `type: ${chart.type}` : 'type: default'}
+          {chart.type ? `type: ${chart.type}` : 'type: spline'}
         </li>
         <li className="col-lg-1 col-md-2 col-sm-2 t me-2 btn-block ms-auto p-0">
           <Button className="btn btn-light w-100" onClick={handleOpenEdit}>

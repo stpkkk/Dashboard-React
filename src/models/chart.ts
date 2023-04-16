@@ -5,7 +5,6 @@ export interface IChart {
   data: number[][];
   color: string;
 }
-
 export interface IChartObj {
   chart: {
     id: string;
