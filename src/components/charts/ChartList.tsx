@@ -17,6 +17,7 @@ export const ChartList: React.FC = () => {
             type: string;
             data: number[][];
             color: string;
+            dataName: string;
           }) => (
             <ChartItem key={chart.id} chart={chart} />
           )

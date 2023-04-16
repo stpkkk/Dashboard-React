@@ -21,6 +21,7 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
         type: '',
         data: [],
         color: '',
+        dataName: '',
       })
     );
   };
@@ -33,11 +34,14 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
       }}
     >
       <ul className="row border border-light rounded p-2 g-2 g-md-0  d-flex align-items-center ">
-        <li className="col-lg-4 col-md-3 col-sm-3 fw-bold text-align text-wrap w-100px">
-          {chart.name ? `name: ${chart.name}` : 'name: no name'}
+        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-align text-wrap w-100px">
+          {chart.name ? `Name: ${chart.name}` : 'Name: no name'}
         </li>
-        <li className="col-lg-4 col-md-3 col-sm-3 fw-bold text-wrap">
-          {chart.type ? `type: ${chart.type}` : 'type: spline'}
+        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-wrap">
+          {chart.type ? `Type: ${chart.type}` : 'Type: spline'}
+        </li>
+        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-wrap">
+          {chart.dataName ? `Value: ${chart.dataName}` : 'Value: data 1'}
         </li>
         <li className="col-lg-1 col-md-2 col-sm-2 t me-2 btn-block ms-auto p-0">
           <Button className="btn btn-light w-100" onClick={handleOpenEdit}>

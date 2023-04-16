@@ -1,11 +1,7 @@
+import { IChart } from './chart';
+
 export interface IModal {
-  chart: {
-    id: string;
-    name: string;
-    type: string;
-    data: number[][];
-    color: string;
-  };
+  chart: IChart;
   setModalEdit: (name: boolean) => void;
-  isModalEdit?: boolean;
+  isModalEdit: boolean;
 }

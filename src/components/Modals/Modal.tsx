@@ -20,9 +20,7 @@ export const Modal: React.FC<IModal> = ({
   const [chartName, setChartName] = useState(chart.name);
   const [chartType, setChartType] = useState(chart.type);
   const [chartColor, setChartColor] = useState(chart.color);
-  const [chartDataName, setChartDataName] = useState(
-    Object.keys(chartsData)[0]
-  );
+  const [chartDataName, setChartDataName] = useState(chart.dataName);
 
   const handleChangeAdd = () => {
     dispatch(
@@ -32,6 +30,7 @@ export const Modal: React.FC<IModal> = ({
         color: chartColor,
         type: chartType,
         data: chartsData[chartDataName],
+        dataName: chartDataName,
       })
     );
     setModal(false);
@@ -45,6 +44,7 @@ export const Modal: React.FC<IModal> = ({
         type: chartType,
         data: chartsData[chartDataName],
         color: chartColor,
+        dataName: chartDataName,
       })
     );
     setModalEdit(false);
@@ -138,7 +138,7 @@ export const Modal: React.FC<IModal> = ({
           />
           <Select
             selectName="chart-data"
-            selectLabelName="Chart data:"
+            selectLabelName="Chart values:"
             onChange={handleChangeChartData}
             selectValue={chartDataName}
             options={optionsChartDataName}

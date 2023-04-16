@@ -67,17 +67,19 @@ export const ViewMode: React.FC = () => {
           </Link>
         </>
       ) : (
-        <>
-          <div className="d-flex align-items-center justify-content-center fw-bold">
-            There are no charts! Add some charts in
-            <Link className="text-decoration-none" to="/settings">
-              &nbsp;Settings!
-            </Link>
+        <div className="d-flex flex-column align-items-center fw-bold">
+          <div>
+            <p className="text-center">
+              There are no charts! Add some charts in
+              <Link className="text-decoration-none" to="/settings">
+                &nbsp;Settings!
+              </Link>
+            </p>
           </div>
-          <div className="d-flex align-items-center justify-content-center mt-3">
+          <div className="mt-3">
             <HiOutlineEmojiSad size={70} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

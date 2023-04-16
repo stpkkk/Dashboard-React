@@ -42,27 +42,27 @@ export const selectModalData: SelectModalDataType = {
     {
       id: 0,
       label: 'data 1',
-      value: 'data1',
+      value: 'data-1',
     },
     {
       id: 1,
       label: 'data 2',
-      value: 'data2',
+      value: 'data-2',
     },
     {
       id: 2,
       label: 'data 3',
-      value: 'data3',
+      value: 'data-3',
     },
     {
       id: 3,
       label: 'data 4',
-      value: 'data4',
+      value: 'data-4',
     },
     {
       id: 4,
       label: 'data 5',
-      value: 'data5',
+      value: 'data-5',
     },
   ],
 };

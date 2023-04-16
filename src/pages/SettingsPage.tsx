@@ -18,7 +18,7 @@ export const SettingsPage: React.FC = () => {
             setModal(true);
           }}
         >
-          Add chart
+          Add Chart
         </Button>
         <Link className="btn btn-primary" to="/">
           View Mode
@@ -32,6 +32,7 @@ export const SettingsPage: React.FC = () => {
             type: '',
             data: [],
             color: '',
+            dataName: '',
           }}
           setModalEdit={setModalEdit}
           isModalEdit={isModalEdit}

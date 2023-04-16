@@ -4,6 +4,7 @@ export interface IChart {
   type: string;
   data: number[][];
   color: string;
+  dataName: string;
 }
 export interface IChartObj {
   chart: {
@@ -12,5 +13,6 @@ export interface IChartObj {
     type: string;
     data: number[][];
     color: string;
+    dataName: string;
   };
 }
