@@ -9,7 +9,7 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();
   const [isModalEdit, setModalEdit] = useState(false);
 
-  const handleEdit = () => {
+  const handleOpenEdit = () => {
     setModalEdit(true);
   };
 
@@ -40,7 +40,7 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
           {chart.type ? `type: ${chart.type}` : 'type: default'}
         </li>
         <li className="col-lg-1 col-md-2 col-sm-2 t me-2 btn-block ms-auto p-0">
-          <Button className="btn btn-light w-100" onClick={handleEdit}>
+          <Button className="btn btn-light w-100" onClick={handleOpenEdit}>
             Edit
           </Button>
         </li>

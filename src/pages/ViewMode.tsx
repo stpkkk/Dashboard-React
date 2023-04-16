@@ -6,7 +6,7 @@ import { HiOutlineEmojiSad } from 'react-icons/hi';
 import { useAppSelector, selectCharts } from '../redux';
 import { ChartList } from '../components';
 
-export const ChartsPage: React.FC = () => {
+export const ViewMode: React.FC = () => {
   const chartListRedux = useAppSelector(selectCharts);
 
   const options = {
@@ -46,6 +46,8 @@ export const ChartsPage: React.FC = () => {
     tooltip: {
       headerFormat: '<span style="font-size: 10px">{point.key}</span><br/>',
       valueSuffix: ' у.е.',
+      xDateFormat: '%A, %b %e',
+      shared: true,
     },
 
     series: chartListRedux,
@@ -53,7 +55,7 @@ export const ChartsPage: React.FC = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center mb-4">Charts</h2>
+      <h2 className="text-center mb-4">View Mode</h2>
       {chartListRedux.length > 0 ? (
         <>
           <HighchartsReact

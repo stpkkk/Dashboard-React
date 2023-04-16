@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import { ChartsPage, AboutPage, SettingsPage } from '../pages';
+import { ViewMode, AboutPage, SettingsPage } from '../pages';
 import { Header, Navbar } from './index';
 import { AppContext } from '../context';
 
-type ChartsDataType = Record<string, number[][]>;
+type ChartsDataType = any;
 
 export const App: React.FC = () => {
   const [isSidebar, setSidebar] = useState(false);
@@ -53,7 +53,7 @@ export const App: React.FC = () => {
       <div className="wrapper">
         <Navbar isSidebar={isSidebar} showSidebar={showSidebar} />
         <Routes>
-          <Route path="/" element={<ChartsPage />} />
+          <Route path="/" element={<ViewMode />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

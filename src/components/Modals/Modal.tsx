@@ -24,12 +24,10 @@ export const Modal: React.FC<IModal> = ({
     Object.keys(chartsData)[0]
   );
 
-  // console.log(chartsData);
-
   const handleChangeAdd = () => {
     dispatch(
       addChart({
-        id: Math.random().toString().substr(2, 2),
+        id: Math.random().toString().substr(3, 3),
         name: chartName,
         color: chartColor,
         type: chartType,
@@ -93,11 +91,11 @@ export const Modal: React.FC<IModal> = ({
     })
   );
 
-  const optionsChartDataName: IOption[] = Object.keys(chartsData).map(
-    (date, index) => ({
-      id: index,
-      value: date,
-      label: date,
+  const optionsChartDataName: IOption[] = selectModalData.dataNameOptions.map(
+    (option) => ({
+      id: option.id,
+      value: option.value,
+      label: option.label,
     })
   );
 

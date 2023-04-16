@@ -10,9 +10,8 @@ export const NavbarData: INavbar[] = [
     path: '',
     icon: <IoIosArrowBack size={30} />,
   },
-
   {
-    title: 'Charts',
+    title: 'View Mode',
     path: '/',
     icon: <AiOutlineAreaChart size={30} />,
   },

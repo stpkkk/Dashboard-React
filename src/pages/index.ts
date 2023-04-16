@@ -1,3 +1,3 @@
 export { AboutPage } from './AboutPage';
-export { ChartsPage } from './ChartsPage';
+export { ViewMode } from './ViewMode';
 export { SettingsPage } from './SettingsPage';

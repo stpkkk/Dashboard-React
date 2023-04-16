@@ -19,7 +19,7 @@ export const Select: React.FC<ISelect> = ({
       value={selectValue}
     >
       {options.map((option) => (
-        <option key={`${option.value}_${option.label}`} value={option.value}>
+        <option key={option.id} value={option.value}>
           {option.label}
         </option>
       ))}

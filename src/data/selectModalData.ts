@@ -1,11 +1,11 @@
 import { IOption } from '../models';
 
-interface selectModalDataType {
+interface SelectModalDataType {
   typeOptions: IOption[];
   dataNameOptions: IOption[];
 }
 
-export const selectModalData: selectModalDataType = {
+export const selectModalData: SelectModalDataType = {
   typeOptions: [
     {
       id: 0,
@@ -38,31 +38,30 @@ export const selectModalData: selectModalDataType = {
       value: 'scatter',
     },
   ],
-
   dataNameOptions: [
     {
       id: 0,
-      label: 'data1',
+      label: 'data 1',
       value: 'data1',
     },
     {
       id: 1,
+      label: 'data 2',
       value: 'data2',
-      label: 'data2',
     },
     {
       id: 2,
-      label: 'data3',
+      label: 'data 3',
       value: 'data3',
     },
     {
       id: 3,
-      label: 'data4',
+      label: 'data 4',
       value: 'data4',
     },
     {
       id: 4,
-      label: 'data5',
+      label: 'data 5',
       value: 'data5',
     },
   ],
