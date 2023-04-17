@@ -14,7 +14,9 @@ export const NoCharts: React.FC = () => (
   <NoChartsWrapper>
     <Typography m="0 0 24px">
       There are no charts! Add some charts in
-      <Link to="/settings">&nbsp;Settings!</Link>
+      <Link to="/settings">
+        &nbsp;<span>Settings!</span>
+      </Link>
     </Typography>
     <HiOutlineEmojiSad size={70} />
   </NoChartsWrapper>

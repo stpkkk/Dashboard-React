@@ -48,6 +48,10 @@ const StyledComponent = styled.div<Props>`
     css`
       text-align: center;
     `};
+  span {
+    color: ${({ theme }: { theme: { colors: { text: { blue: string } } } }) =>
+      theme.colors.text.blue};
+  }
 `;
 
 export const Typography = (props: Props) => <StyledComponent {...props} />;

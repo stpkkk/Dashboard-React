@@ -5,6 +5,7 @@ export const theme = {
   colors: {
     text: {
       primary: '#faebd7',
+      blue: '#0d6efd',
     },
     background: {
       page: '#212529',

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../styles';
 
 export const InputWrapper = styled.div`
   margin-bottom: 16px;
@@ -16,22 +17,18 @@ const inputStyles = `
   padding: 10px;
   font-size: inherit;
   border-radius: 8px;
-  border: 1px solid ${({
-    theme,
-  }: {
-    theme: { colors: { border: { lightGray: string } } };
-  }) => theme.colors.border.lightGray};
+	outline: none;
+	border: 2px solid ${theme.colors.border.lightGray};
   ::placeholder {
-    color: ${({
-      theme,
-    }: {
-      theme: { colors: { border: { lightGray: string } } };
-    }) => theme.colors.border.lightGray};
-  }
+    color: ${theme.colors.border.lightGray}
+	
 `;
 
 export const InputText = styled.input`
   ${inputStyles}
+  :focus {
+    outline: none;
+  }
 `;
 
 export const InputSelect = styled.select`

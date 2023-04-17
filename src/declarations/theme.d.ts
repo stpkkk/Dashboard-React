@@ -8,6 +8,7 @@ declare module 'styled-components' {
     colors: {
       text: {
         primary: string;
+        blue: string;
       };
       background: {
         page: string;
