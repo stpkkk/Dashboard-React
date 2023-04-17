@@ -1,29 +1,52 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { ChartList, Modal } from '../components';
+import styled from 'styled-components';
+import {
+  Button,
+  ChartList,
+  Modal,
+  PageTitle,
+  PageWrapper,
+} from '../components';
 import { AppContext } from '../context';
+import { theme } from '../styles';
+
+const {
+  button: { blueBtn, greenBtn },
+  hover: { greenHover, blueHover },
+} = theme.colors;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;
 
 export const SettingsPage: React.FC = () => {
   const { isModal, setModal } = useContext(AppContext);
   const [isModalEdit, setModalEdit] = useState(false);
+
   return (
-    <div className="container">
-      <h2 className="text-center mb-4">Settings</h2>
+    <PageWrapper>
+      <PageTitle>Settings</PageTitle>
       <ChartList />
-      <div className="d-flex gap-2">
+      <ButtonsWrapper>
         <Button
-          className="btn-success"
+          bg={greenBtn}
+          mw={100}
+          p="10px 0"
+          hoverBg={greenHover}
+          color="#fff"
           onClick={() => {
             setModal(true);
           }}
         >
           Add Chart
         </Button>
-        <Link className="btn btn-primary" to="/">
-          View Mode
-        </Link>
-      </div>
+        <Button bg={blueBtn} mw={100} p="10px 0" hoverBg={blueHover}>
+          <Link to="/">View Mode</Link>
+        </Button>
+      </ButtonsWrapper>
       {isModal && (
         <Modal
           chart={{
@@ -38,6 +61,6 @@ export const SettingsPage: React.FC = () => {
           isModalEdit={isModalEdit}
         />
       )}
-    </div>
+    </PageWrapper>
   );
 };

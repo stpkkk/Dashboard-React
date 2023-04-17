@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
 import { Header, Navbar } from './index';
 import { AppContext } from '../context';
 import { Router } from './Router';
+import { GlobalStyles, theme } from '../styles';
 
 export const App: React.FC = () => {
   const [isSidebar, setSidebar] = useState(false);
@@ -45,10 +47,13 @@ export const App: React.FC = () => {
   }
 
   return (
-    <AppContext.Provider value={contextValue}>
-      <Header showSidebar={showSidebar} />
-      <Navbar isSidebar={isSidebar} showSidebar={showSidebar} />
-      <Router />
-    </AppContext.Provider>
+    <ThemeProvider theme={theme}>
+      <AppContext.Provider value={contextValue}>
+        <GlobalStyles />
+        <Header setSidebar={showSidebar} />
+        <Navbar isSidebar={isSidebar} setSidebar={showSidebar} />
+        <Router />
+      </AppContext.Provider>
+    </ThemeProvider>
   );
 };

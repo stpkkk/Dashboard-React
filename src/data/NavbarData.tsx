@@ -7,7 +7,7 @@ import { INavbar } from '../models';
 export const NavbarData: INavbar[] = [
   {
     title: 'Hide',
-    path: '',
+    path: '#',
     icon: <IoIosArrowBack size={30} />,
   },
   {

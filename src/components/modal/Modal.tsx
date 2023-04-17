@@ -1,13 +1,55 @@
 import React, { useState, useContext } from 'react';
-import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
+import { IoMdClose } from 'react-icons/io';
 import { addChart, editChart, useAppDispatch } from '../../redux';
 import { AppContext } from '../../context';
 import { selectModalData } from '../../data';
 import { ColorPicker } from './ColorPicker';
 import { Select } from './Select';
-import { InputText } from './InputText';
 import { IOption, IModal } from '../../models';
-import './Modal.css';
+import { theme } from '../../styles';
+import { Button, Typography } from '../common';
+import { InputName } from './InputName';
+
+const {
+  background: { form },
+  hover: { redHover, blueHover },
+  button: { blueBtn },
+} = theme.colors;
+
+const ModalWrapper = styled.div<{ active: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: ${(props) => (props.active ? 1 : 0)};
+  visibility: ${(props) => (props.active ? 'visible' : 'hidden')};
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+`;
+
+const ModalContent = styled.div<{ active: boolean }>`
+  background-color: ${form};
+  color: #000;
+  max-width: 450px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: ${(props) => (props.active ? 1 : 0)};
+  transform: translateY(${(props) => (props.active ? 0 : '-20px')});
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  ${theme.breakpoints.mobile} {
+    border-radius: 0;
+    height: 100%;
+  }
+`;
 
 export const Modal: React.FC<IModal> = ({
   chart,
@@ -100,53 +142,58 @@ export const Modal: React.FC<IModal> = ({
   );
 
   return (
-    <div
-      className={isModal || isModalEdit ? 'modal active' : 'modal'}
-      role="button"
-      tabIndex={0}
+    <ModalWrapper
+      active={isModal || isModalEdit}
       onClick={handleClickCloseModal}
       onKeyDown={handleKeyDown}
     >
-      <div
-        className={
-          isModal || isModalEdit ? 'modal-content active' : 'modal-content'
-        }
-        role="button"
-        tabIndex={-1}
+      <ModalContent
+        active={isModal || isModalEdit}
         onKeyDown={handleKeyDown}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <Button
-          className="btn btn-close btn-danger mb-2 p-2 ms-auto"
-          onClick={() => {
-            setModal(false);
-            setModalEdit(false);
-          }}
-        />
-        <h3>{isModalEdit ? 'Edit' : 'Add'}</h3>
-
         <form onSubmit={handleFormSubmit}>
-          <InputText setChartName={setChartName} chartName={chartName} />
+          <Button
+            p="0"
+            float="right"
+            mw={30}
+            hoverBg={redHover}
+            onClick={handleClickCloseModal}
+          >
+            <IoMdClose size={30} />
+          </Button>
+          <Typography fz={28} lh={36} m="0 0 16px">
+            {isModalEdit ? 'Edit Chart' : 'Add Chart'}
+          </Typography>
+          <InputName setChartName={setChartName} chartName={chartName} />
           <Select
             selectName="chart-type"
-            selectLabelName="Chart type:"
+            selectLabel="Chart type:"
             onChange={handleChangeChartType}
             selectValue={chartType}
             options={optionsChartType}
           />
           <Select
             selectName="chart-data"
-            selectLabelName="Chart values:"
+            selectLabel="Chart values:"
             onChange={handleChangeChartData}
             selectValue={chartDataName}
             options={optionsChartDataName}
           />
           <ColorPicker chartColor={chartColor} setChartColor={setChartColor} />
-          <Button type="submit">{isModalEdit ? 'Edit' : 'Submit'}</Button>
+          <Button
+            bg={blueBtn}
+            hoverBg={blueHover}
+            p="10px 0"
+            mw={100}
+            color="#fff"
+          >
+            {isModalEdit ? 'Edit' : 'Save'}
+          </Button>
         </form>
-      </div>
-    </div>
+      </ModalContent>
+    </ModalWrapper>
   );
 };

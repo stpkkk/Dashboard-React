@@ -1,6 +1,7 @@
 import React from 'react';
-import { ColorResult, ChromePicker } from 'react-color';
+import { ChromePicker, ColorResult } from 'react-color';
 import { IColorPicker } from '../../models';
+import { InputWrapper, Label } from '../common';
 
 export const ColorPicker: React.FC<IColorPicker> = ({
   setChartColor,
@@ -9,16 +10,15 @@ export const ColorPicker: React.FC<IColorPicker> = ({
   const handleColorChange = (color: ColorResult) => {
     setChartColor(color.hex);
   };
+
   return (
-    <div className="mb-3">
-      <label htmlFor="chart-color" className="mb-2">
-        Chart color:
-      </label>
+    <InputWrapper>
+      <Label htmlFor="chart-color">Chart color:</Label>
       <ChromePicker
         color={chartColor}
         onChangeComplete={handleColorChange}
         disableAlpha
       />
-    </div>
+    </InputWrapper>
   );
 };

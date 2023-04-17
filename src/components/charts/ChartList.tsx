@@ -1,15 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { selectCharts } from '../../redux';
 import { ChartItem } from './ChartItem';
+import { Typography } from '../common';
+
+const StyledChartList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 24px;
+`;
 
 export const ChartList: React.FC = () => {
   const chartListRedux = useSelector(selectCharts);
 
   return (
     <>
-      <h3 className="mb-4">Chart list:</h3>
-      <ul className=" d-flex flex-column gap-3">
+      <Typography fz={24} m="0 0 24px">
+        Chart list:
+      </Typography>
+      <StyledChartList>
         {chartListRedux.map(
           (chart: {
             id: string;
@@ -22,7 +33,7 @@ export const ChartList: React.FC = () => {
             <ChartItem key={chart.id} chart={chart} />
           )
         )}
-      </ul>
+      </StyledChartList>
     </>
   );
 };

@@ -1,9 +1,45 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import { deleteChart } from '../../redux';
-import { Modal } from '../modals';
+import { Modal } from '../modal';
 import { IChartObj } from '../../models';
+import { theme } from '../../styles';
+import { Button } from '../common';
+
+const {
+  border: { lightGray },
+  button: { lightBtn, redBtn },
+  hover: { redHover, lightHover },
+} = theme.colors;
+
+const ChartItemWrapper = styled.li`
+  color: ${(props) => props.color};
+`;
+
+const ChartItemRow = styled.ul`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${lightGray};
+  border-radius: 8px;
+  padding: 10px;
+  gap: 8px;
+  ${theme.breakpoints.mobile} {
+    flex-direction: column;
+  }
+`;
+
+const ChartItemCol = styled.li`
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-weight: bold;
+  overflow: hidden;
+  word-wrap: break-word;
+  ${theme.breakpoints.mobile} {
+    flex-basis: 20px;
+  }
+`;
 
 export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   const dispatch = useDispatch();
@@ -27,33 +63,43 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
   };
 
   return (
-    <li
-      className=""
-      style={{
-        color: chart.color,
-      }}
-    >
-      <ul className="row border border-light rounded p-2 g-2 g-md-0  d-flex align-items-center ">
-        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-align text-wrap w-100px">
+    <ChartItemWrapper color={chart.color}>
+      <ChartItemRow>
+        <ChartItemCol>
           {chart.name ? `Name: ${chart.name}` : 'Name: no name'}
-        </li>
-        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-wrap">
+        </ChartItemCol>
+        <ChartItemCol>
           {chart.type ? `Type: ${chart.type}` : 'Type: spline'}
-        </li>
-        <li className="col-lg-3 col-md-3 col-sm-3 fw-bold text-wrap">
-          {chart.dataName ? `Value: ${chart.dataName}` : 'Value: data 1'}
-        </li>
-        <li className="col-lg-1 col-md-2 col-sm-2 t me-2 btn-block ms-auto p-0">
-          <Button className="btn btn-light w-100" onClick={handleOpenEdit}>
-            Edit
-          </Button>
-        </li>
-        <li className="col-lg-1 col-md-2 col-sm-2 p-0">
-          <Button className="btn btn-danger w-100" onClick={handleDelete}>
-            Delete
-          </Button>
-        </li>
-      </ul>
+        </ChartItemCol>
+        <ChartItemCol>
+          {chart.dataName ? `Value: ${chart.dataName}` : 'Value: data-1'}
+        </ChartItemCol>
+        <Button
+          mw={150}
+          p="10px 0"
+          bg={lightBtn}
+          fBasis="0"
+          onClick={handleOpenEdit}
+          fGrow={1}
+          fShrink={1}
+          hoverBg={lightHover}
+        >
+          Edit
+        </Button>
+        <Button
+          mw={150}
+          p="10px 0"
+          bg={redBtn}
+          fBasis="0"
+          onClick={handleDelete}
+          fGrow={1}
+          fShrink={1}
+          hoverBg={redHover}
+          color="#fff"
+        >
+          Delete
+        </Button>
+      </ChartItemRow>
       {isModalEdit && (
         <Modal
           chart={chart}
@@ -61,6 +107,6 @@ export const ChartItem: React.FC<IChartObj> = ({ chart }) => {
           setModalEdit={setModalEdit}
         />
       )}
-    </li>
+    </ChartItemWrapper>
   );
 };

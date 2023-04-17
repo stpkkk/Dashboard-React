@@ -5,3 +5,5 @@ export * from './sidebar';
 export * from './chart';
 export * from './option';
 export * from './color-picker';
+export * from './header';
+export * from './input-name';

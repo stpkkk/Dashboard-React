@@ -2,9 +2,9 @@ import { ChangeEvent } from 'react';
 import { IOption } from './option';
 
 export interface ISelect {
-  selectValue: any;
+  selectValue: string;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
-  selectLabelName: string;
+  selectLabel: string;
   selectName: string;
   options: IOption[];
 }

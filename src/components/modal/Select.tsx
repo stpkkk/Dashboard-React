@@ -1,28 +1,24 @@
 import React from 'react';
+import { InputSelect, InputWrapper, Label } from '../common';
 import { ISelect } from '../../models';
 
 export const Select: React.FC<ISelect> = ({
   selectValue,
   onChange,
-  selectLabelName,
+  selectLabel,
   selectName,
   options,
 }) => (
-  <div className="mb-3">
-    <label htmlFor={selectName} className="form-label" aria-label={selectName}>
-      {selectLabelName}
-    </label>
-    <select
-      id={selectName}
-      className="form-select"
-      onChange={onChange}
-      value={selectValue}
-    >
+  <InputWrapper>
+    <Label htmlFor={selectName} aria-label={selectName}>
+      {selectLabel}
+    </Label>
+    <InputSelect id={selectName} onChange={onChange} value={selectValue}>
       {options.map((option) => (
         <option key={option.id} value={option.value}>
           {option.label}
         </option>
       ))}
-    </select>
-  </div>
+    </InputSelect>
+  </InputWrapper>
 );
