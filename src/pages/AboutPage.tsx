@@ -2,8 +2,12 @@ import React from 'react';
 import { FaReact } from 'react-icons/fa';
 import { PageWrapper, PageTitle, Typography } from '../components';
 
+interface Paragraph {
+  paragraph: string;
+}
+
 export const AboutPage: React.FC = () => {
-  const paragraphs = [
+  const paragraphs: Paragraph[] = [
     {
       paragraph:
         'The Dashboard project is a web application that provides users with visual insights and analytics for a particular data set. The data set is fetched from a JSON server, and the application is built using modern front-end technologies including React, Redux Toolkit, TypeScript, Highcharts, and Styled Components.',
@@ -40,8 +44,8 @@ export const AboutPage: React.FC = () => {
         Test application by Stepanov Igor for &quot;Natlex&quot;
       </Typography>
       <ul>
-        {paragraphs.map(({ paragraph }: any) => (
-          <li>
+        {paragraphs.map(({ paragraph }) => (
+          <li key={paragraph}>
             <Typography mw={600} m="0 0 8px">
               {paragraph}
             </Typography>

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
-import { Header, Navbar } from './index';
+import { Header, Loader, Navbar } from './index';
 import { AppContext } from '../context';
 import { Router } from './Router';
 import { GlobalStyles, theme } from '../styles';
@@ -43,7 +43,7 @@ export const App: React.FC = () => {
   );
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (

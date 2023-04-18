@@ -5,3 +5,4 @@ export * from './modal';
 export * from './navbar';
 export * from './layout';
 export * from './common';
+export * from './loader';
