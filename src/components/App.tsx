@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 // import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
-import { Header, Loader, Navbar } from './index';
+import { Loader, Navbar } from './index';
 import { AppContext } from '../context';
 import { Router } from './Router';
 import { GlobalStyles, theme } from '../styles';
 import { chartsDataBase } from '../data';
+import { Header } from './header/Header';
 
 export const App: React.FC = () => {
   const [isSidebar, setSidebar] = useState(false);
