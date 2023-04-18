@@ -7,6 +7,7 @@ type Props = {
   m?: string;
   fw?: number;
   lh?: string | number;
+  mw?: number;
   color?: string;
   center?: boolean;
 };
@@ -23,6 +24,11 @@ const StyledComponent = styled.div<Props>`
     fz &&
     css`
       font-size: ${fz}px;
+    `};
+  ${({ mw }) =>
+    mw &&
+    css`
+      max-width: ${mw}px;
     `};
   ${({ fw }) =>
     fw &&

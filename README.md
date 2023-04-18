@@ -43,17 +43,23 @@
 </summary>
 <div>
 <h2>Libraries were used</h2>
-<p>axios - HTTP-client</p>
-<p>sass - CSS preprocessor</p>
-<p>Bootstrap - CSS framework</p>
- <p>Hightcharts - charts</p>
- <p>react-icons</p>
- <p>react-redux - state manager</p>
- <p>react-router-dom - declarative routing for React</p>
+<p>Axios</p>
+<p>Styled Components</p>
+<p>Hightcharts</p>
+<p>React-icons</p>
+<p>Redux Toolkit</p>
+<p>React-router-dom</p>
+<p>Json-server</p>
 </div>
 <div>
-<h2>Frontend-developer test task for "Natlex" company</h2>
+<h2>Dashboard</h2>
 </div>
+<div>The Dashboard project is a web application that provides users with visual insights and analytics for a particular data set. The data set is fetched from a JSON server, and the application is built using modern front-end technologies including React, Redux Toolkit, TypeScript, Highcharts, and Styled Components.</div>
+<div>Data Visualization: The application uses Highcharts, to visualize the data in various formats such as line charts, bar charts, and pie charts. The charts are highly customizable and provide users with interactive and visually appealing representations of the data.</div>
+<div> State Management: Redux Toolkit, which is a set of tools for efficient Redux development, is used for state management in the application. It provides a robust and scalable solution for managing the application`s state.</div>
+<div>Type-Safe Development: TypeScript, a statically-typed superset of JavaScript, is used to ensure type safety and provide better developer experience. It helps catch potential bugs and provides autocompletion and type checking, resulting in more robust and reliable code.</div>
+<div>Styling: Styled Components, a popular CSS-in-JS library, is used for styling the components in the application. It allows for writing CSS in JavaScript, providing dynamic styling based on props and maintaining a modular and scalable styling system.</div>
+<div>Data Management: The application fetches data from a JSON server using REST API endpoints. JSON Server is that provides a backend for development and testing purposes. It allows for simulating CRUD operations and managing data in a simple JSON file.</div>
 
 <div >
 <p>Prewie:</p>
