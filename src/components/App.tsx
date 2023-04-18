@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
 import { Header, Loader, Navbar } from './index';
 import { AppContext } from '../context';
 import { Router } from './Router';
 import { GlobalStyles, theme } from '../styles';
+import { chartsDataBase } from '../data';
 
 export const App: React.FC = () => {
   const [isSidebar, setSidebar] = useState(false);
@@ -16,8 +17,8 @@ export const App: React.FC = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:5000/chartsDataBase');
-        setChartsData(res.data);
+        // const res = await axios.get('http://localhost:5000/chartsDataBase');
+        setChartsData(chartsDataBase);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);

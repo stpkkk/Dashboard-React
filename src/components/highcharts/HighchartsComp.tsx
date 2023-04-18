@@ -36,10 +36,10 @@ export const HighchartsComp: React.FC = () => {
         text: 'Date',
       },
       type: 'datetime',
-      dateTimeLabelFormats: {
-        day: '%e %b %Y',
-        month: '%b %Y',
-        year: '%Y',
+      labels: {
+        formatter(obj: { value: number }) {
+          return Highcharts.dateFormat('%d %b %Y', obj.value);
+        },
       },
     },
     yAxis: {
@@ -51,12 +51,12 @@ export const HighchartsComp: React.FC = () => {
     tooltip: {
       headerFormat: '<span style="font-size: 10px">{point.key}</span><br/>',
       valueSuffix: ' у.е.',
-      xDateFormat: '%A, %b %e',
-      shared: true,
     },
 
     series: chartListRedux,
   };
+
+  console.log(chartListRedux);
   return (
     <>
       <HighchartsReact
