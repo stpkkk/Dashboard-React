@@ -1,4 +1,7 @@
 <div stl></div>
+<h2>Deploy: 
+ https://stpkkk-dashboard.netlify.app/
+</h2>
 <details>
 <summary>
 <h2>How to start</h2>
