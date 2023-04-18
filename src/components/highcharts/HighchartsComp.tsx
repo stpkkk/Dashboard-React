@@ -64,16 +64,18 @@ export const HighchartsComp: React.FC = () => {
         options={options}
         constructorType="stockChart"
       />
-      <Button
-        mw={100}
-        m="24px 0 0"
-        p="10px 0"
-        bg={blueBtn}
-        hoverBg={blueHover}
-        color="#fff"
-      >
-        <Link to="/settings">Settings</Link>
-      </Button>
+      <Link to="/settings">
+        <Button
+          mw={100}
+          m="24px 0 0"
+          p="10px 0"
+          bg={blueBtn}
+          hoverBg={blueHover}
+          color="#fff"
+        >
+          Settings
+        </Button>
+      </Link>
     </>
   );
 };

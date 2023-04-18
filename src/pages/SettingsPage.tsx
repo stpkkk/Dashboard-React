@@ -43,9 +43,17 @@ export const SettingsPage: React.FC = () => {
         >
           Add Chart
         </Button>
-        <Button bg={blueBtn} mw={100} p="10px 0" hoverBg={blueHover}>
-          <Link to="/">View Mode</Link>
-        </Button>
+        <Link to="/">
+          <Button
+            bg={blueBtn}
+            mw={100}
+            p="10px 5px"
+            hoverBg={blueHover}
+            color="#fff"
+          >
+            View Mode
+          </Button>
+        </Link>
       </ButtonsWrapper>
       {isModal && (
         <Modal
