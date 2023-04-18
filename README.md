@@ -1,7 +1,4 @@
 <div stl></div>
-<h2>Deploy: 
- https://dashboard-bystpkkk.netlify.app/
-</h2>
 <details>
 <summary>
 <h2>How to start</h2>
